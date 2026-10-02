@@ -279,6 +279,12 @@ for (const category of CATEGORY_ORDER) {
 return [{ json: { html, subject: `Competitor Digest — ${dateStr}` } }];</code></pre></details></div></details></li><li><details class="wf-item" id="node-gmail" data-step="14"><summary><span class="n">14</span><span class="t">Send the digest</span><span class="ty">Gmail · Send a message</span></summary><div class="wf-body"><p>Sends the HTML to my own inbox. I first planned to deliver to Slack, but the available workspace needed admin approval for scopes this workflow didn't need, so it sends from and to my own Gmail account instead.</p><dl class="wf-kv"><div><dt>Subject</dt><dd>Competitor news daily digest</dd></div></dl></div></details></li></ol>
     </section>
 
+    <figure class="wf-real" aria-labelledby="wf-real-h">
+      <p class="label" id="wf-real-h">The real workflow in n8n</p>
+      <a class="wf-real-img" href="../assets/img/n8n-digest-canvas-1633.webp"><img src="../assets/img/n8n-digest-canvas-1000.webp" srcset="../assets/img/n8n-digest-canvas-1000.webp 1000w, ../assets/img/n8n-digest-canvas-1633.webp 1633w" sizes="(min-width: 1160px) 1080px, 92vw" width="1633" height="291" loading="lazy" decoding="async" alt="Screenshot of the workflow in n8n's editor: 14 steps from Schedule Trigger to Send a message, with Gemini chat models and structured output parsers attached below the two Basic LLM Chain steps."></a>
+      <figcaption>A screenshot of the same workflow in n8n's editor. The map above is redrawn from this workflow's exported file so each step can be opened and read. <a href="../assets/img/n8n-digest-canvas-1633.webp">Open full size</a></figcaption>
+    </figure>
+
     <div class="cs-layout">
       <nav class="toc" aria-label="On this page"><p class="label">On this page</p><ol><li><a href="#summary-h">Summary</a></li><li><a href="#stages">How a run works</a></li><li><a href="#sample">A real digest</a></li><li><a href="#decisions">Decisions</a></li><li><a href="#limits">Limits</a></li><li><a href="#download">Get the workflow</a></li><li><a href="#documents">Documents</a></li></ol></nav>
       <div class="cs-body">
