@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Competitor News Digest: n8n AI Workflow | Nikhil Arora</title>
+<meta name="description" content="An n8n workflow that turns a week of AI video news into one categorised email: Serper search, Gemini clustering and summaries, Gmail delivery.">
+<link rel="canonical" href="https://nikhilarorapm.github.io/ai-builds/n8n-competitor-news-digest.html">
+<meta name="author" content="Nikhil Arora">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#F4F6F3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E1411" media="(prefers-color-scheme: dark)">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Nikhil Arora">
+<meta property="og:locale" content="en_IN">
+<meta property="og:url" content="https://nikhilarorapm.github.io/ai-builds/n8n-competitor-news-digest.html">
+<meta property="og:title" content="Competitor News Digest: n8n AI Workflow | Nikhil Arora">
+<meta property="og:description" content="An n8n workflow that turns a week of AI video news into one categorised email: Serper search, Gemini clustering and summaries, Gmail delivery.">
+<meta property="og:image" content="https://nikhilarorapm.github.io/assets/img/og-n8n-digest.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Map of the n8n competitor news digest workflow: 14 steps from a daily trigger to a Gmail digest.">
+<meta property="article:published_time" content="2026-10-02">
+<meta property="article:author" content="https://nikhilarorapm.github.io/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Competitor News Digest: n8n AI Workflow | Nikhil Arora">
+<meta name="twitter:description" content="An n8n workflow that turns a week of AI video news into one categorised email: Serper search, Gemini clustering and summaries, Gmail delivery.">
+<meta name="twitter:image" content="https://nikhilarorapm.github.io/assets/img/og-n8n-digest.jpg">
+
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="manifest" href="../site.webmanifest">
+<link rel="preload" href="../assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/css/site.css">
+<link rel="stylesheet" href="../assets/css/workflow.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://nikhilarorapm.github.io/ai-builds/n8n-competitor-news-digest.html#article",
+      "headline": "Competitor News Daily Digest in n8n",
+      "description": "An n8n workflow that turns a week of AI video news into one categorised email: Serper search, Gemini clustering and summaries, Gmail delivery.",
+      "url": "https://nikhilarorapm.github.io/ai-builds/n8n-competitor-news-digest.html",
+      "mainEntityOfPage": "https://nikhilarorapm.github.io/ai-builds/n8n-competitor-news-digest.html",
+      "image": "https://nikhilarorapm.github.io/assets/img/og-n8n-digest.jpg",
+      "datePublished": "2026-10-02",
+      "dateModified": "2026-10-02",
+      "inLanguage": "en-IN",
+      "author": {
+        "@type": "Person",
+        "@id": "https://nikhilarorapm.github.io/#person",
+        "name": "Nikhil Arora",
+        "url": "https://nikhilarorapm.github.io/"
+      },
+      "publisher": {
+        "@type": "Person",
+        "@id": "https://nikhilarorapm.github.io/#person",
+        "name": "Nikhil Arora",
+        "url": "https://nikhilarorapm.github.io/"
+      },
+      "isPartOf": {
+        "@id": "https://nikhilarorapm.github.io/#website"
+      },
+      "keywords": "n8n workflow, AI automation, competitor intelligence, Gemini, Serper, LLM, news digest, product manager"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Nikhil Arora",
+          "item": "https://nikhilarorapm.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AI builds",
+          "item": "https://nikhilarorapm.github.io/#ai-builds"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Competitor News Daily Digest in n8n",
+          "item": "https://nikhilarorapm.github.io/ai-builds/n8n-competitor-news-digest.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-head">
+  <div class="wrap head-row">
+    <a class="brand" href="../index.html">Nikhil Arora</a>
+    <nav class="site-nav" aria-label="Sections">
+      <a href="../index.html#work">Work</a>
+      <a class="opt" href="../index.html#case-studies">Case studies</a>
+      <a class="opt" href="../index.html#education">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="../index.html">Nikhil Arora</a></li><li><a href="../index.html#ai-builds">AI builds</a></li><li aria-current="page">Competitor news digest</li></ol></nav>
+  </div>
+  <article class="wrap cs" aria-labelledby="cs-title">
+    <header class="cs-head">
+      <p class="kicker">AI build · Workflow automation</p>
+      <h1 id="cs-title">Competitor News Daily Digest in n8n</h1>
+      <p class="cs-lede">An n8n workflow that turns a week of news about five AI video companies into one categorised email. Duplicate coverage is merged and irrelevant matches are dropped by one model, then each story is summarised by a lighter one.</p>
+      <dl class="cs-meta"><div><dt class="label">Context</dt><dd>Assignment, Airtribe AI-First Product Management</dd></div><div><dt class="label">Built</dt><dd>August 2026</dd></div><div><dt class="label">Stack</dt><dd>n8n, Serper, Gemini 3.6 Flash and 3.1 Flash-Lite, Google Sheets, Gmail</dd></div><div><dt class="label">Running cost</dt><dd>₹0: Serper's free credits (5 per run) and Gemini's free tier</dd></div><div><dt class="label">Status</dt><dd>Ran on its daily schedule in August 2026; not running now</dd></div></dl>
+    </header>
+
+    <section class="wf" id="workflow" aria-labelledby="wf-h">
+      <div class="wf-top">
+        <h2 class="label" id="wf-h">The workflow, step by step</h2>
+        <p class="wf-hint"><span class="d">Click any step to see what it does and the exact prompt or code it runs.</span><span class="m">Tap a step to open it.</span></p>
+      </div>
+      <figure class="wf-map"><svg class="wf-svg" viewBox="0 0 1080 520" role="group" aria-label="Workflow map: 14 steps and 6 AI sub-nodes"><defs><marker id="wf-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="wf-arrowhead" d="M0 1.5L9 5 0 8.5z"/></marker></defs><text class="stage" x="30" y="16">1 · Collect and clean, no AI</text><text class="stage" x="30" y="196">2 · Understand with AI, then deliver</text><path class="wf-e" d="M107.1 72 H198.4" marker-end="url(#wf-arrow)"/><path class="wf-e" d="M261.4 72 H352.7" marker-end="url(#wf-arrow)"/><path class="wf-e" d="M415.7 72 H507.0" marker-end="url(#wf-arrow)"/><path class="wf-e" d="M570.0 72 H661.3" marker-end="url(#wf-arrow)"/><path class="wf-e" d="M724.3 72 H815.6" marker-end="url(#wf-arrow)"/><path class="wf-e" d="M878.6 72 H969.9" marker-end="url(#wf-arrow)"/><path class="wf-e" d="M107.1 246 H198.4" marker-end="url(#wf-arrow)"/><path class="wf-e" d="M261.4 246 H352.7" marker-end="url(#wf-arrow)"/><path class="wf-e" d="M415.7 246 H507.0" marker-end="url(#wf-arrow)"/><path class="wf-e" d="M570.0 246 H661.3" marker-end="url(#wf-arrow)"/><path class="wf-e" d="M724.3 246 H815.6" marker-end="url(#wf-arrow)"/><path class="wf-e" d="M878.6 246 H969.9" marker-end="url(#wf-arrow)"/><path class="wf-e" d="M1032.9 72 H1066 Q1074 72 1074 80 V170 Q1074 178 1066 178 H20 Q12 178 12 186 V238 Q12 246 20 246 H44.1" marker-end="url(#wf-arrow)"/><path class="wf-e sub" d="M63.1 326.0 L47.1 370.0"/><path class="wf-e sub" d="M91.1 326.0 L105.1 370.0"/><path class="wf-e sub" d="M121.6 406.3 L150.4 445.8"/><path class="wf-e sub" d="M526.0 326.0 L510.0 370.0"/><path class="wf-e sub" d="M554.0 326.0 L568.0 370.0"/><path class="wf-e sub" d="M584.5 406.3 L613.2 445.8"/><a class="wf-n" href="#node-schedule" data-node="node-schedule" aria-label="Step 1: Start every morning at 8 AM"><rect x="47.1" y="42.0" width="60" height="60" rx="16"/><g class="ic" transform="translate(64.1 59.0) scale(1.083)"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></g><text class="num" x="52.1" y="36.0">01</text><text class="lb" x="77.1" y="122.0" text-anchor="middle">Schedule</text><text class="lb" x="77.1" y="137.0" text-anchor="middle">8 AM daily</text></a><a class="wf-n" href="#node-sheet" data-node="node-sheet" aria-label="Step 2: Read the competitor list"><rect x="201.4" y="42.0" width="60" height="60" rx="10"/><g class="ic" transform="translate(218.4 59.0) scale(1.083)"><rect x="4" y="4.5" width="16" height="15" rx="2"/><path d="M4 9.5h16M4 14.5h16M10 4.5v15"/></g><text class="num" x="206.4" y="36.0">02</text><text class="lb" x="231.4" y="122.0" text-anchor="middle">Read</text><text class="lb" x="231.4" y="137.0" text-anchor="middle">competitor list</text></a><a class="wf-n" href="#node-serper" data-node="node-serper" aria-label="Step 3: Search Google News"><rect x="355.7" y="42.0" width="60" height="60" rx="10"/><g class="ic" transform="translate(372.7 59.0) scale(1.083)"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.6 2.4 3.8 5.2 3.8 8.5s-1.2 6.1-3.8 8.5c-2.6-2.4-3.8-5.2-3.8-8.5S9.4 5.9 12 3.5z"/></g><text class="num" x="360.7" y="36.0">03</text><text class="lb" x="385.7" y="122.0" text-anchor="middle">Search news</text><text class="lb" x="385.7" y="137.0" text-anchor="middle">with Serper</text></a><a class="wf-n" href="#node-split" data-node="node-split" aria-label="Step 4: One item per article"><rect x="510.0" y="42.0" width="60" height="60" rx="10"/><g class="ic" transform="translate(527.0 59.0) scale(1.083)"><path d="M4 12h5.5M9.5 12l8.5-6M9.5 12H18M9.5 12l8.5 6"/><circle cx="19" cy="6" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="19" cy="18" r="1"/></g><text class="num" x="515.0" y="36.0">04</text><text class="lb" x="540.0" y="122.0" text-anchor="middle">Split</text><text class="lb" x="540.0" y="137.0" text-anchor="middle">articles</text></a><a class="wf-n" href="#node-fields" data-node="node-fields" aria-label="Step 5: Tag each article with its competitor"><rect x="664.3" y="42.0" width="60" height="60" rx="10"/><g class="ic" transform="translate(681.3 59.0) scale(1.083)"><path d="M5 19l1-4.2L15.6 5.2a2.1 2.1 0 0 1 3 3L9 17.8 5 19z"/><path d="M13.8 7l3 3"/></g><text class="num" x="669.3" y="36.0">05</text><text class="lb" x="694.3" y="122.0" text-anchor="middle">Tag</text><text class="lb" x="694.3" y="137.0" text-anchor="middle">fields</text></a><a class="wf-n" href="#node-dedupe" data-node="node-dedupe" aria-label="Step 6: Remove exact duplicates"><rect x="818.6" y="42.0" width="60" height="60" rx="10"/><g class="ic" transform="translate(835.6 59.0) scale(1.083)"><rect x="4" y="8" width="11" height="11" rx="2"/><path d="M9 5h8.5A2.5 2.5 0 0 1 20 7.5V16"/><path d="M7 13.5h5"/></g><text class="num" x="823.6" y="36.0">06</text><text class="lb" x="848.6" y="122.0" text-anchor="middle">Remove</text><text class="lb" x="848.6" y="137.0" text-anchor="middle">duplicates</text></a><a class="wf-n" href="#node-gather" data-node="node-gather" aria-label="Step 7: Gather everything into one batch"><rect x="972.9" y="42.0" width="60" height="60" rx="10"/><g class="ic" transform="translate(989.9 59.0) scale(1.083)"><path d="M4 6h4.5l5.5 6-5.5 6H4M4 12h16"/><path d="M17 9l3 3-3 3"/></g><text class="num" x="977.9" y="36.0">07</text><text class="lb" x="1002.9" y="122.0" text-anchor="middle">Gather into</text><text class="lb" x="1002.9" y="137.0" text-anchor="middle">one batch</text></a><a class="wf-n ai" href="#node-cluster" data-node="node-cluster" aria-label="Step 8: Cluster stories and judge relevance"><rect x="47.1" y="216.0" width="60" height="60" rx="10"/><g class="ic" transform="translate(64.1 233.0) scale(1.083)"><path d="M11 3.5l1.9 5.1 5.1 1.9-5.1 1.9L11 17.5l-1.9-5.1L4 10.5l5.1-1.9z"/><path d="M18.5 15.5v5M16 18h5"/></g><text class="num" x="52.1" y="210.0">08</text><text class="lb" x="77.1" y="296.0" text-anchor="middle">Cluster +</text><text class="lb" x="77.1" y="311.0" text-anchor="middle">judge relevance</text></a><a class="wf-n" href="#node-split2" data-node="node-split2" aria-label="Step 9: One item per story"><rect x="201.4" y="216.0" width="60" height="60" rx="10"/><g class="ic" transform="translate(218.4 233.0) scale(1.083)"><path d="M4 12h5.5M9.5 12l8.5-6M9.5 12H18M9.5 12l8.5 6"/><circle cx="19" cy="6" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="19" cy="18" r="1"/></g><text class="num" x="206.4" y="210.0">09</text><text class="lb" x="231.4" y="296.0" text-anchor="middle">Split</text><text class="lb" x="231.4" y="311.0" text-anchor="middle">stories</text></a><a class="wf-n" href="#node-filter" data-node="node-filter" aria-label="Step 10: Keep relevant stories only"><rect x="355.7" y="216.0" width="60" height="60" rx="10"/><g class="ic" transform="translate(372.7 233.0) scale(1.083)"><path d="M4 5h16l-6.2 7.6V19l-3.6-1.8v-4.6z"/></g><text class="num" x="360.7" y="210.0">10</text><text class="lb" x="385.7" y="296.0" text-anchor="middle">Keep</text><text class="lb" x="385.7" y="311.0" text-anchor="middle">relevant</text></a><a class="wf-n ai" href="#node-summarise" data-node="node-summarise" aria-label="Step 11: Summarise and categorise each story"><rect x="510.0" y="216.0" width="60" height="60" rx="10"/><g class="ic" transform="translate(527.0 233.0) scale(1.083)"><path d="M11 3.5l1.9 5.1 5.1 1.9-5.1 1.9L11 17.5l-1.9-5.1L4 10.5l5.1-1.9z"/><path d="M18.5 15.5v5M16 18h5"/></g><text class="num" x="515.0" y="210.0">11</text><text class="lb" x="540.0" y="296.0" text-anchor="middle">Summarise +</text><text class="lb" x="540.0" y="311.0" text-anchor="middle">categorise</text></a><a class="wf-n" href="#node-stamp" data-node="node-stamp" aria-label="Step 12: Re-attach competitors and stamp the date"><rect x="664.3" y="216.0" width="60" height="60" rx="10"/><g class="ic" transform="translate(681.3 233.0) scale(1.083)"><path d="M5 19l1-4.2L15.6 5.2a2.1 2.1 0 0 1 3 3L9 17.8 5 19z"/><path d="M13.8 7l3 3"/></g><text class="num" x="669.3" y="210.0">12</text><text class="lb" x="694.3" y="296.0" text-anchor="middle">Re-attach</text><text class="lb" x="694.3" y="311.0" text-anchor="middle">competitors</text></a><a class="wf-n" href="#node-code" data-node="node-code" aria-label="Step 13: Build the email"><rect x="818.6" y="216.0" width="60" height="60" rx="10"/><g class="ic" transform="translate(835.6 233.0) scale(1.083)"><path d="M8.5 7L4 12l4.5 5M15.5 7L20 12l-4.5 5M13.4 5l-2.8 14"/></g><text class="num" x="823.6" y="210.0">13</text><text class="lb" x="848.6" y="296.0" text-anchor="middle">Build</text><text class="lb" x="848.6" y="311.0" text-anchor="middle">email HTML</text></a><a class="wf-n" href="#node-gmail" data-node="node-gmail" aria-label="Step 14: Send the digest"><rect x="972.9" y="216.0" width="60" height="60" rx="10"/><g class="ic" transform="translate(989.9 233.0) scale(1.083)"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><path d="M4 7l8 6 8-6"/></g><text class="num" x="977.9" y="210.0">14</text><text class="lb" x="1002.9" y="296.0" text-anchor="middle">Send</text><text class="lb" x="1002.9" y="311.0" text-anchor="middle">with Gmail</text></a><a class="wf-n sub" href="#node-cluster-model" data-node="node-cluster-model" aria-label="Model: Gemini 3.6 Flash"><circle cx="47.1" cy="392" r="22"/><g class="ic" transform="translate(37.1 382.0) scale(0.833)"><rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M10 7V4M14 7V4M10 20v-3M14 20v-3M7 10H4M7 14H4M20 10h-3M20 14h-3"/></g><text class="lb sm" x="47.1" y="429.0" text-anchor="middle">Gemini</text><text class="lb sm" x="47.1" y="444.0" text-anchor="middle">3.6 Flash</text></a><a class="wf-n sub" href="#node-cluster-parser" data-node="node-cluster-parser" aria-label="Structured output parser"><circle cx="105.1" cy="392" r="22"/><g class="ic" transform="translate(95.1 382.0) scale(0.833)"><path d="M9 4.5c-2 0-2.5 1-2.5 2.5v2.5c0 1.2-.8 2.5-2 2.5 1.2 0 2 1.3 2 2.5V17c0 1.5.5 2.5 2.5 2.5M15 4.5c2 0 2.5 1 2.5 2.5v2.5c0 1.2.8 2.5 2 2.5-1.2 0-2 1.3-2 2.5V17c0 1.5-.5 2.5-2.5 2.5"/></g><text class="lb sm" x="105.1" y="429.0" text-anchor="middle">Output</text><text class="lb sm" x="105.1" y="444.0" text-anchor="middle">parser</text></a><a class="wf-n sub" href="#node-cluster-fix" data-node="node-cluster-fix" aria-label="Auto-fix model: Gemini 3.1 Flash-Lite"><circle cx="163.1" cy="456" r="17"/><g class="ic" transform="translate(155.1 448.0) scale(0.667)"><rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M10 7V4M14 7V4M10 20v-3M14 20v-3M7 10H4M7 14H4M20 10h-3M20 14h-3"/></g><text class="lb sm" x="163.1" y="488.0" text-anchor="middle">Auto-fix</text><text class="lb sm" x="163.1" y="503.0" text-anchor="middle">Flash-Lite</text></a><a class="wf-n sub" href="#node-summarise-model" data-node="node-summarise-model" aria-label="Model: Gemini 3.1 Flash-Lite"><circle cx="510.0" cy="392" r="22"/><g class="ic" transform="translate(500.0 382.0) scale(0.833)"><rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M10 7V4M14 7V4M10 20v-3M14 20v-3M7 10H4M7 14H4M20 10h-3M20 14h-3"/></g><text class="lb sm" x="510.0" y="429.0" text-anchor="middle">Gemini 3.1</text><text class="lb sm" x="510.0" y="444.0" text-anchor="middle">Flash-Lite</text></a><a class="wf-n sub" href="#node-summarise-parser" data-node="node-summarise-parser" aria-label="Structured output parser"><circle cx="568.0" cy="392" r="22"/><g class="ic" transform="translate(558.0 382.0) scale(0.833)"><path d="M9 4.5c-2 0-2.5 1-2.5 2.5v2.5c0 1.2-.8 2.5-2 2.5 1.2 0 2 1.3 2 2.5V17c0 1.5.5 2.5 2.5 2.5M15 4.5c2 0 2.5 1 2.5 2.5v2.5c0 1.2.8 2.5 2 2.5-1.2 0-2 1.3-2 2.5V17c0 1.5-.5 2.5-2.5 2.5"/></g><text class="lb sm" x="568.0" y="429.0" text-anchor="middle">Output</text><text class="lb sm" x="568.0" y="444.0" text-anchor="middle">parser</text></a><a class="wf-n sub" href="#node-summarise-fix" data-node="node-summarise-fix" aria-label="Auto-fix model: Gemini 3.1 Flash-Lite"><circle cx="626.0" cy="456" r="17"/><g class="ic" transform="translate(618.0 448.0) scale(0.667)"><rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M10 7V4M14 7V4M10 20v-3M14 20v-3M7 10H4M7 14H4M20 10h-3M20 14h-3"/></g><text class="lb sm" x="626.0" y="488.0" text-anchor="middle">Auto-fix</text><text class="lb sm" x="626.0" y="503.0" text-anchor="middle">Flash-Lite</text></a></svg></figure>
+      <div class="wf-pager" hidden>
+        <button class="btn" type="button" data-dir="-1"><span aria-hidden="true">&larr;</span> Previous step</button>
+        <p class="wf-pos" aria-live="polite"></p>
+        <button class="btn" type="button" data-dir="1">Next step <span aria-hidden="true">&rarr;</span></button>
+      </div>
+      <ol class="wf-items"><li><details class="wf-item" id="node-schedule" data-step="1"><summary><span class="n">01</span><span class="t">Start every morning at 8 AM</span><span class="ty">Schedule Trigger</span></summary><div class="wf-body"><p>Fires once a day at 8 AM. Everything else runs from this one trigger.</p><dl class="wf-kv"><div><dt>Trigger at</dt><dd>8:00 AM, every day</dd></div></dl></div></details></li><li><details class="wf-item" id="node-sheet" data-step="2"><summary><span class="n">02</span><span class="t">Read the competitor list</span><span class="ty">Google Sheets · Get rows</span></summary><div class="wf-body"><p>Reads one row per competitor: name, domain, aliases and a search query tuned for that name. The list lives in a sheet, so I can add a competitor without editing the workflow.</p><div class="table-scroll"><table class="data-table"><thead><tr><th scope="col">Name</th><th scope="col">Search query</th></tr></thead><tbody><tr><th scope="row">Runway</th><td><code>&quot;Runway AI&quot; OR &quot;RunwayML&quot; OR &quot;Runway Gen-4&quot;</code></td></tr><tr><th scope="row">Kling AI</th><td><code>&quot;Kling AI&quot; OR &quot;Kling 3.0&quot;</code></td></tr><tr><th scope="row">Luma AI</th><td><code>&quot;Luma AI&quot; OR &quot;Luma Labs&quot;</code></td></tr><tr><th scope="row">Pika</th><td><code>&quot;Pika AI&quot; OR &quot;Pika Labs&quot;</code></td></tr><tr><th scope="row">Google Veo</th><td><code>&quot;Google Veo&quot; OR &quot;Veo 3&quot;</code></td></tr></tbody></table></div></div></details></li><li><details class="wf-item" id="node-serper" data-step="3"><summary><span class="n">03</span><span class="t">Search Google News</span><span class="ty">HTTP Request · Serper</span></summary><div class="wf-body"><p>Runs once per competitor and asks Serper's Google News endpoint for up to 10 articles from the past week. Searching each competitor on its own means every result arrives already tagged, and each name gets its own query. That matters because three of the five names are ordinary words: a plain search for “Runway” returns fashion shows and airport runways, and “Pika” returns Pokémon.</p><dl class="wf-kv"><div><dt>Request</dt><dd><code>POST https://google.serper.dev/news</code></dd></div><div><dt>Body</dt><dd><code>{{ JSON.stringify({ q: $json.Query, num: 10, tbs: &quot;qdr:w&quot; }) }}</code></dd></div><div><dt>Window</dt><dd><code>tbs: "qdr:w"</code> is Google's past-week filter</dd></div><div><dt>API key</dt><dd>Held in n8n's credential store, not in the workflow</dd></div></dl></div></details></li><li><details class="wf-item" id="node-split" data-step="4"><summary><span class="n">04</span><span class="t">One item per article</span><span class="ty">Split Out</span></summary><div class="wf-body"><p>Serper returns a nested list of articles for each competitor. This turns every article into its own item.</p><dl class="wf-kv"><div><dt>Field</dt><dd><code>news</code></dd></div></dl></div></details></li><li><details class="wf-item" id="node-fields" data-step="5"><summary><span class="n">05</span><span class="t">Tag each article with its competitor</span><span class="ty">Edit Fields</span></summary><div class="wf-body"><p>Re-attaches the competitor name from the sheet row and keeps only what the AI steps need.</p><dl class="wf-kv"><div><dt>Fields kept</dt><dd>competitor, url, title, description, source, date</dd></div></dl></div></details></li><li><details class="wf-item" id="node-dedupe" data-step="6"><summary><span class="n">06</span><span class="t">Remove exact duplicates</span><span class="ty">Remove Duplicates</span></summary><div class="wf-body"><p>Drops repeated URLs, which appear when one article matches two competitors' searches. The check is exact and free, so it runs before any model sees the data. Different outlets covering the same event are a separate problem, and the next AI step handles that.</p><dl class="wf-kv"><div><dt>Compare on</dt><dd><code>url</code></dd></div></dl></div></details></li><li><details class="wf-item" id="node-gather" data-step="7"><summary><span class="n">07</span><span class="t">Gather everything into one batch</span><span class="ty">Aggregate</span></summary><div class="wf-body"><p>Collapses all the articles into a single item. Deciding whether two articles describe the same event is a comparison, so the next step has to see every article at once.</p><dl class="wf-kv"><div><dt>Output field</dt><dd><code>articles</code></dd></div></dl></div></details></li><li><details class="wf-item" id="node-cluster" data-step="8"><summary><span class="n">08</span><span class="t">Cluster stories and judge relevance</span><span class="ty">Basic LLM Chain · Gemini 3.6 Flash</span></summary><div class="wf-body"><p>Groups articles that cover the same real-world event, lists every tracked competitor each story involves, and marks each story relevant or not. An executive leaving a competitor counts as relevant. A meme made with a competitor's tool, or a listicle that only names it, doesn't.</p><details class="wf-cfg"><summary>Show the prompt</summary><pre tabindex="0"><code>You are reviewing news articles gathered while tracking AI video generation
+competitors. Some are duplicate coverage of the same event from different
+outlets. Some mention multiple competitors in one roundup piece. Some
+aren&#x27;t really news about any tracked competitor at all, despite matching
+the search.
+
+Articles:
+{{ JSON.stringify($json.articles) }}
+
+STEP 1 — Group into distinct real-world stories.
+
+Two articles are the SAME story only if they describe the same specific
+event or announcement (e.g., the same funding round, the same launch).
+Similar topic or genre is NOT enough — do not merge separate comparison
+articles or separate listicles just because they cover similar ground.
+
+Example — SAME story: &quot;Kling 3.0 raises $2.8B&quot; + &quot;Kling captures majority
+of July funding&quot; (same funding round, different outlets).
+Example — DIFFERENT stories: &quot;Top 10 AI Video Tools&quot; listicle + &quot;Seedance
+vs Kling&quot; comparison article (different pieces, just similar topic, even
+if both mention the same competitors).
+
+For each story, list every tracked competitor it&#x27;s genuinely about.
+
+STEP 2 — Judge relevance for each story.
+
+Mark relevant: true if the article is substantively about the tracked
+competitor itself — its product, technology, business, funding,
+partnerships, or strategy. This includes factual descriptions, reviews,
+and comparisons of the product, not just breaking-news events.
+
+Mark relevant: false if any of the following apply:
+- The competitor&#x27;s name isn&#x27;t actually mentioned (being topically about
+  AI video in general is not enough on its own).
+- The article is really about something else — a third party&#x27;s content,
+  project, or story — that merely happens to use or mention the
+  competitor&#x27;s tool in passing, rather than being about the competitor
+  itself. Example: a meme video &quot;made with&quot; a competitor&#x27;s tool is about
+  the meme, not the competitor — mark false.
+- The article is a generic listicle or roundup that mentions the
+  competitor&#x27;s name only as one entry among many, with no real
+  substance about that competitor specifically.
+
+One exception: a personnel move (an executive or employee leaving the
+competitor) IS relevant, even though the article&#x27;s nominal subject is
+their new venture — it signals something real about the competitor&#x27;s
+talent and strategy. Mark these true.
+
+Return only a JSON object with a &quot;stories&quot; key. For each story, include
+every field (url, title, description, source, date) for every article
+in that story, not just the URL — the next step needs this content to
+write from.</code></pre></details><div class="wf-sub" id="node-cluster-model"><h4>Model: Gemini 3.6 Flash</h4><p>The more capable of the two models. Deciding whether two differently worded articles describe one event is a judgement call, so it gets the stronger model.</p></div><div class="wf-sub" id="node-cluster-parser"><h4>Structured output parser</h4><p>Forces the reply into one JSON shape: a list of stories, each with its competitors, its articles and a relevant flag. Auto-fix is on, so a reply that doesn't parse goes to a second model for repair.</p><details class="wf-cfg"><summary>Show the expected shape</summary><pre tabindex="0"><code>{
+  &quot;stories&quot;: [
+    {
+      &quot;competitors&quot;: [&quot;Kling AI&quot;],
+      &quot;articles&quot;: [
+        {&quot;url&quot;: &quot;https://example.com/a&quot;, &quot;title&quot;: &quot;...&quot;, &quot;description&quot;: &quot;...&quot;, &quot;source&quot;: &quot;...&quot;, &quot;date&quot;: &quot;...&quot;}
+      ],
+      &quot;relevant&quot;: true
+    }
+  ]
+}</code></pre></details></div><div class="wf-sub" id="node-cluster-fix"><h4>Auto-fix model: Gemini 3.1 Flash-Lite</h4><p>Only called when the main reply fails to parse.</p></div></div></details></li><li><details class="wf-item" id="node-split2" data-step="9"><summary><span class="n">09</span><span class="t">One item per story</span><span class="ty">Split Out</span></summary><div class="wf-body"><p>Unpacks the model's list of stories so each story moves on as its own item.</p><dl class="wf-kv"><div><dt>Field</dt><dd><code>output.stories</code></dd></div></dl></div></details></li><li><details class="wf-item" id="node-filter" data-step="10"><summary><span class="n">10</span><span class="t">Keep relevant stories only</span><span class="ty">Filter</span></summary><div class="wf-body"><p>Passes stories marked relevant and drops the rest. On the 14 August test run it removed 7 of 13 clustered stories, including an unrelated chip-materials startup that three outlets had covered.</p><dl class="wf-kv"><div><dt>Condition</dt><dd><code>relevant</code> is <code>true</code></dd></div></dl></div></details></li><li><details class="wf-item" id="node-summarise" data-step="11"><summary><span class="n">11</span><span class="t">Summarise and categorise each story</span><span class="ty">Basic LLM Chain · Gemini 3.1 Flash-Lite</span></summary><div class="wf-body"><p>Runs once per story. It writes two to three sentences under 300 characters, picks exactly one of eight categories, and chooses the best source link. It may only use facts in the titles and snippets, so a missing amount or name means a shorter summary, not an invented one.</p><details class="wf-cfg"><summary>Show the prompt</summary><pre tabindex="0"><code>You are writing one entry for a competitor-tracking digest read by a
+senior product manager. Be specific: name products, dollar amounts, and
+companies exactly. No vague adjectives like &quot;innovative&quot; or &quot;game-changing&quot;.
+
+Only use facts actually present in the title/description below. If a
+specific detail (dollar amount, investor name, partner name) isn&#x27;t in the
+source text, don&#x27;t invent one — write a shorter, more general summary
+instead of a specific-sounding but fabricated one.
+
+Story (competitors: {{ $json.competitors.join(&#x27;, &#x27;) }}):
+{{ JSON.stringify($json.articles) }}
+
+SUMMARY: 2-3 sentences, under 300 characters. Combine the most complete
+facts across every article — if one outlet has a number and another names
+a person or partner, include both. If the story involves multiple tracked
+competitors, make clear how each is involved.
+
+CATEGORY: exactly one of: Product Launch, Funding, Partnership,
+Hiring/Leadership, Acquisition, Reviews &amp; Comparisons, Company Update, Other.
+
+Categorize by what the story means for the TRACKED COMPETITOR, not by the
+article&#x27;s nominal subject. Example: an executive leaving the competitor to
+found a new company is Hiring/Leadership, not Product Launch.
+
+Funding means the company RAISED outside investment (a round, a named
+investor). Revenue, ARR, valuation mentioned without a round, or other
+financial metrics are Company Update, not Funding — these are different
+even though both involve dollar figures.
+
+Reviews &amp; Comparisons: third-party articles reviewing or comparing the
+product against others, with no other news content.
+
+Other: generic descriptions or mentions with no real news value at all.
+
+LINK: copy one URL exactly as it appears in the articles above — prefer the
+one with the most specific, sourced detail. Never modify or construct a URL.
+
+Return only a JSON object, no other text:
+{&quot;summary&quot;: &quot;...&quot;, &quot;category&quot;: &quot;Funding&quot;, &quot;link&quot;: &quot;https://...&quot;}</code></pre></details><div class="wf-sub" id="node-summarise-model"><h4>Model: Gemini 3.1 Flash-Lite</h4><p>A lighter model with a higher requests-per-minute allowance on Gemini's free tier. This step fires once per story, and running it on the bigger model hit the rate limit on the first full test. Summarising is closer to formatting than reasoning, because relevance was already decided upstream.</p></div><div class="wf-sub" id="node-summarise-parser"><h4>Structured output parser</h4><p>Category is an enum of the eight allowed values, so an invented category fails here instead of breaking the email's grouping.</p><details class="wf-cfg"><summary>Show the schema</summary><pre tabindex="0"><code>{
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;properties&quot;: {
+    &quot;summary&quot;: { &quot;type&quot;: &quot;string&quot; },
+    &quot;category&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;enum&quot;: [&quot;Product Launch&quot;, &quot;Funding&quot;, &quot;Partnership&quot;, &quot;Hiring/Leadership&quot;, &quot;Acquisition&quot;, &quot;Reviews &amp; Comparisons&quot;, &quot;Company Update&quot;, &quot;Other&quot;]
+    },
+    &quot;link&quot;: { &quot;type&quot;: &quot;string&quot; }
+  },
+  &quot;required&quot;: [&quot;summary&quot;, &quot;category&quot;, &quot;link&quot;]
+}</code></pre></details></div><div class="wf-sub" id="node-summarise-fix"><h4>Auto-fix model: Gemini 3.1 Flash-Lite</h4><p>Only called when the main reply fails to parse.</p></div></div></details></li><li><details class="wf-item" id="node-stamp" data-step="12"><summary><span class="n">12</span><span class="t">Re-attach competitors and stamp the date</span><span class="ty">Edit Fields</span></summary><div class="wf-body"><p>Copies each story's competitor list back from the Filter step, because the model's reply doesn't carry it, and stamps the run date.</p><dl class="wf-kv"><div><dt>Adds</dt><dd><code>competitors</code>, <code>loggedDate</code></dd></div></dl></div></details></li><li><details class="wf-item" id="node-code" data-step="13"><summary><span class="n">13</span><span class="t">Build the email</span><span class="ty">Code · JavaScript</span></summary><div class="wf-body"><p>Groups stories by category in a fixed order, skips empty categories, and writes the HTML: competitor names in bold, then the summary and a View link.</p><details class="wf-cfg"><summary>Show the code</summary><pre tabindex="0"><code>const CATEGORY_ORDER = [
+  &quot;Product Launch&quot;, &quot;Funding&quot;, &quot;Partnership&quot;, &quot;Acquisition&quot;,
+  &quot;Hiring/Leadership&quot;, &quot;Reviews &amp; Comparisons&quot;, &quot;Company Update&quot;, &quot;Other&quot;
+];
+
+const normalize = s =&gt; (s || &quot;&quot;).trim().toLowerCase();
+const categoryMap = Object.fromEntries(CATEGORY_ORDER.map(c =&gt; [normalize(c), c]));
+
+const stories = $input.all().map(item =&gt; ({
+  ...item.json.output,
+  competitors: item.json.competitors
+}));
+
+const grouped = {};
+for (const story of stories) {
+  const matched = categoryMap[normalize(story.category)] || &quot;Other&quot;;
+  if (!grouped[matched]) grouped[matched] = [];
+  grouped[matched].push(story);
+}
+
+const dateStr = $now.toFormat(&#x27;MMM d&#x27;);
+let html = `&lt;h2&gt;Competitor Digest — ${dateStr}&lt;/h2&gt;`;
+
+for (const category of CATEGORY_ORDER) {
+  if (!grouped[category]) continue;
+  html += `&lt;h3&gt;${category}&lt;/h3&gt;&lt;ul&gt;`;
+  for (const story of grouped[category]) {
+    const names = story.competitors.join(&#x27;, &#x27;);
+    html += `&lt;li&gt;&lt;strong&gt;${names}&lt;/strong&gt; — ${story.summary} &lt;a href=&quot;${story.link}&quot;&gt;View&lt;/a&gt;&lt;/li&gt;`;
+  }
+  html += `&lt;/ul&gt;`;
+}
+
+return [{ json: { html, subject: `Competitor Digest — ${dateStr}` } }];</code></pre></details></div></details></li><li><details class="wf-item" id="node-gmail" data-step="14"><summary><span class="n">14</span><span class="t">Send the digest</span><span class="ty">Gmail · Send a message</span></summary><div class="wf-body"><p>Sends the HTML to my own inbox. I first planned to deliver to Slack, but the available workspace needed admin approval for scopes this workflow didn't need, so it sends from and to my own Gmail account instead.</p><dl class="wf-kv"><div><dt>Subject</dt><dd>Competitor news daily digest</dd></div></dl></div></details></li></ol>
+    </section>
+
+    <div class="cs-layout">
+      <nav class="toc" aria-label="On this page"><p class="label">On this page</p><ol><li><a href="#summary-h">Summary</a></li><li><a href="#stages">How a run works</a></li><li><a href="#sample">A real digest</a></li><li><a href="#decisions">Decisions</a></li><li><a href="#limits">Limits</a></li><li><a href="#download">Get the workflow</a></li><li><a href="#documents">Documents</a></li></ol></nav>
+      <div class="cs-body">
+<section class="summary" aria-labelledby="summary-h">
+<h2 class="label" id="summary-h">Summary</h2>
+<dl><div><dt class="label">Problem</dt><dd>Following five AI video competitors means wading through duplicated coverage and noise. Three of the five names are ordinary words, so plain searches return airport runways and Pokémon.</dd></div><div><dt class="label call">What it does</dt><dd>Sends one email each morning. Duplicate coverage is merged, irrelevant matches are dropped, and each story gets two or three lines, a category and its source link.</dd></div><div><dt class="label">How</dt><dd>Seven plain data steps collect and clean the news. Two Gemini models then do the judgement work: the stronger one clusters stories and judges relevance, and the lighter one summarises.</dd></div></dl>
+</section>
+<section class="cs-sec" id="stages" aria-labelledby="stages-h">
+<h2 id="stages-h">How a run works</h2>
+<p>Steps 1 to 7 use no AI. They read the competitor list, search each competitor separately, flatten the results and drop exact duplicate URLs. That last check is exact and free, so it runs before any model sees the data.</p>
+<p>Steps 8 to 14 handle what string matching can't. The first model sees every article at once. It merges coverage of the same event from different outlets and marks each story relevant or not. Then a second, lighter model writes one entry per surviving story, and plain code groups the entries by category and builds the email.</p>
+<p>Both AI steps go through a structured output parser. The summary step's category must be one of eight fixed values, so a made-up category fails at the schema instead of quietly breaking the email.</p>
+</section>
+<section class="cs-sec" id="sample" aria-labelledby="sample-h">
+<h2 id="sample-h">A real digest</h2>
+<figure class="mail"><div class="mail-head"><p class="mail-subj">Competitor news daily digest</p><p class="mail-meta"><span>From the workflow to my inbox</span><span>Wed 19 Aug 2026, 8:02 AM IST</span></p></div><div class="mail-body"><h3 class="mail-h">Competitor Digest — Aug 19</h3><h4>Product Launch</h4><ul><li><strong>Runway</strong> — Runway released Gen-4, an AI video generation model designed to improve consistency for characters, objects, and scenes. <a href="https://www.startuphub.ai/ai-news/ai-video/2026/runway-gen-4-ai-video-generation-targets-world-consistency" target="_blank" rel="nofollow noopener noreferrer">View</a></li><li><strong>Runway</strong> — Runway Research announced real-time video generation powered by GWM-1. The feature enables interactive online video experiences. <a href="https://www.startuphub.ai/ai-news/ai-video/2026/runway-unveils-real-time-video-generation-shifting-interaction-paradigms" target="_blank" rel="nofollow noopener noreferrer">View</a></li></ul><h4>Funding</h4><ul><li><strong>Kling AI</strong> — Kling AI secured $2.8 billion in funding, leading the tech sector&#x27;s financial activity for July 2026. This accounted for the top funding deal among four total sector transactions reported by Tracxn. <a href="https://sbr.com.sg/markets-investing/in-focus/tech-sector-logs-four-july-deals-kling-ai-tops-funding-28b" target="_blank" rel="nofollow noopener noreferrer">View</a></li></ul><h4>Hiring/Leadership</h4><ul><li><strong>Luma AI</strong> — Verena Puhm, former Head of Dream Lab L.A. at Luma AI, has departed the company to launch Matriarch, a Los Angeles-based production company focused on AI-powered animation projects. <a href="https://www.google.com/goto?url=CAESswEB7keqTVuoXd4Ak89oZdkcm4-U1OxcsVgika5RsLyF5xZ1QZDZuHx23J6lZobAVQVXVIS6VH1OjoXHeEzw4WfNDgT5QHHe4TBmnKZhAO1QYkAP3P5ENGaXyLmq5QeRpjcuiAq_OIL6em-czy4p0MOjYOf-VFbjhPRpUDv7j_Dv6PzH3eMCdMMMjqOS5KPYtyAarIRxPykJHFYcNkI1lBLto1AT3LN6dxkhmftHTrganTPcCQ==" target="_blank" rel="nofollow noopener noreferrer">View</a></li></ul><h4>Reviews &amp; Comparisons</h4><ul><li><strong>Kling AI</strong> — FindArticles released a comparison between Seedance 2.5 and Kling 3.0, evaluating how each AI video model fits into existing technical workflows. <a href="https://www.findarticles.com/seedance-2-5-vs-kling-3-0-which-ai-video-workflow-fits-tech-teams-better/" target="_blank" rel="nofollow noopener noreferrer">View</a></li><li><strong>Google Veo</strong> — The Hype Magazine published a comparison between Google&#x27;s Veo 3.1 and Seedance 2.5, evaluating their respective AI video workflows for music and entertainment creators. <a href="https://www.thehypemagazine.com/2026/08/12/seedance-2-5-vs-veo-3-1-which-ai-video-workflow-fits-music-and-entertainment-creators/" target="_blank" rel="nofollow noopener noreferrer">View</a></li></ul><h4>Company Update</h4><ul><li><strong>Runway</strong> — Runway is positioning its AI video tools as a cost-effective solution for growing companies to produce marketing content like product launches and investor updates in-house. <a href="https://finchannel.com/runway-ai-how-growing-companies-are-producing-marketing-video-in-house/133593/tech-2/2026/08/" target="_blank" rel="nofollow noopener noreferrer">View</a></li><li><strong>Kling AI</strong> — Kuaishou is set to report its Q2 financial results, which will disclose Kling AI&#x27;s revenue growth, progress with enterprise clients, and the impact of computing power expenditures. <a href="https://news.futunn.com/en/post/77750000/chart-preview-kuaishou-s-q2-results-to-be-released-on" target="_blank" rel="nofollow noopener noreferrer">View</a></li><li><strong>Runway</strong> — Runway Research launched General World Models, a research initiative focused on simulating real-world visual dynamics. <a href="https://www.startuphub.ai/ai-news/ai-video/2026/runway-general-world-models-advance-ai-simulation" target="_blank" rel="nofollow noopener noreferrer">View</a></li></ul><h4>Other</h4><ul><li><strong>Runway</strong> — RunwayML provides a web-based creative platform that includes professional video editing and generation tools. <a href="https://www.trendhunter.com/trends/runwayml" target="_blank" rel="nofollow noopener noreferrer">View</a></li></ul><p class="mail-foot">This email was sent automatically with n8n</p></div><figcaption>The email exactly as it arrived on 19 August 2026, with my address removed. Ten stories in six categories; categories with nothing to report are left out.</figcaption></figure>
+</section>
+<section class="cs-sec" id="decisions" aria-labelledby="decisions-h">
+<h2 id="decisions-h">Decisions</h2>
+<ul>
+<li><strong>One search per competitor, not one combined query.</strong> A single OR'd query would use fewer credits, but the results would come back untagged. Matching names back into the text fails exactly on the ambiguous names that needed tuned queries. At five competitors a run, the extra credits don't matter.</li>
+<li><strong>Two duplicate problems, two mechanisms.</strong> Identical URLs are removed with an exact check. The same event covered by different outlets goes to the clustering model, because no string comparison catches it.</li>
+<li><strong>Relevance judged inside clustering.</strong> That step already reads every article, so a separate scoring pass would add cost without adding information.</li>
+<li><strong>Grouped by category, not by competitor.</strong> The category list stays at eight however many competitors are tracked. Competitor names stay in bold on every line.</li>
+<li><strong>The taxonomy was revised after real output.</strong> With the first six categories, too much landed in Other, and an article about Luma AI's revenue was filed under Funding even though its point was that Luma has raised nothing. I added Reviews &amp; Comparisons and Company Update, and tightened Funding to mean a raise from outside investors.</li>
+<li><strong>Each model matched to its job.</strong> One call per story on the stronger model hit Gemini's free-tier rate limit on the first full test. I split the work instead of paying for capacity: the stronger model for the comparisons, the lighter one for the per-story formatting.</li>
+</ul>
+</section>
+<section class="cs-sec" id="limits" aria-labelledby="limits-h">
+<h2 id="limits-h">Limits</h2>
+<ul>
+<li>Summaries are written from titles and snippets, not full articles, so they're only as detailed as the snippet.</li>
+<li>Grounding is instructed, not enforced. Nothing checks a summary against its source, so treat figures and names as pointers to confirm.</li>
+<li>Stories repeat across days. The search covers the past week and the workflow doesn't remember what it has already sent, so Kling AI's July funding round appears in both the 14 and 19 August digests. The history log I designed would fix this; it isn't built yet.</li>
+<li>A quiet day sends no email, which looks the same as a failed run. A branch that sends a short “nothing new” message would close that gap.</li>
+<li>Some links are Google redirect URLs rather than direct article links.</li>
+</ul>
+</section>
+<section class="cs-sec" id="download" aria-labelledby="download-h">
+<h2 id="download-h">Get the workflow</h2>
+<p>Import the file into n8n with <strong>Import from file</strong>. I've replaced my sheet ID, email address and credential IDs with placeholders. To run it, create four credentials (Serper API Key, Google Gemini, Google Sheets OAuth2 and Gmail OAuth2), point the Sheets step at your own competitor list, and set your own address in the Gmail step.</p>
+<div class="cs-docs"><a class="doc-link" href="../docs/nikhil-arora-n8n-competitor-news-digest.json" download>Workflow file <span class="meta">JSON · 20 nodes</span></a></div>
+</section>
+<section class="cs-sec" id="documents" aria-labelledby="documents-h">
+<h2 id="documents-h">Documents</h2>
+<div class="cs-docs"><a class="doc-link" href="../docs/nikhil-arora-n8n-competitor-news-digest.pdf">Workflow write-up <span class="meta">PDF · 8 pages</span></a></div>
+</section>
+<nav class="cs-next" aria-label="More AI builds">
+<a class="prev" href="../workradar/index.html"><span class="label">Another AI build</span><span class="t">WorkRadar: try the live MVP</span></a>
+<a class="next" href="../index.html#ai-builds"><span class="label">Back to</span><span class="t">All AI builds</span></a>
+</nav>
+      </div>
+    </div>
+  </article>
+
+  <section class="sec wrap" id="contact" aria-labelledby="contact-title">
+    <h2 class="label" id="contact-title">Contact</h2>
+    <div class="sec-body">
+      <p class="contact-line">Open to Associate Product Manager and Product Analyst roles.</p>
+      <div class="contact-row">
+        <a class="email" id="email" href="mailto:n.nikhilarora1999@gmail.com">n.nikhilarora1999@gmail.com</a>
+        <button class="btn" type="button" id="copy-email" data-email="n.nikhilarora1999@gmail.com">Copy email</button>
+        <a class="btn" href="https://www.linkedin.com/in/nikhilarora2021" target="_blank" rel="me noopener">LinkedIn</a>
+      </div>
+      <p class="copy-status" id="copy-status" role="status" aria-live="polite"></p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot wrap">
+  <p>© 2026 Nikhil Arora</p>
+  <p>The case studies and builds are independent work from Airtribe's AI-First Product Management program. They are not affiliated with or endorsed by the companies named, and company names belong to their owners.</p>
+</footer>
+
+<script src="../assets/js/copy-email.js" defer></script>
+<script src="../assets/js/workflow.js" defer></script>
+</body>
+</html>

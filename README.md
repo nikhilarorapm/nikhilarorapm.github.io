@@ -12,15 +12,18 @@ To review it on your computer, double-click `index.html`. Every link, PDF and pa
 |---|---|
 | `index.html` | The home page: summary of every project, education, skills, experience, contact |
 | `case-studies/` | One page each for Porter, PhonePe, X, Zepto and Zomato, each with its own search title, description and preview card |
+| `ai-builds/` | The interactive page for the n8n competitor news digest: a clickable map of the workflow, the real 19 August digest, and the workflow file to download |
 | `404.html` | The page people see if they open a link that doesn't exist |
-| `robots.txt`, `sitemap.xml` | Tell Google what to crawl: the home page, the five case studies and the PDFs |
+| `robots.txt`, `sitemap.xml` | Tell Google what to crawl: the home page, the five case studies, the n8n page and the PDFs |
 | `og-image.jpg` | The preview card for the home page when the link is shared |
 | `favicon.*`, `apple-touch-icon.png`, `icon-*.png`, `site.webmanifest` | Browser tab and home-screen icons |
 | `assets/css/site.css` | The styles every page shares |
+| `assets/css/workflow.css`, `assets/js/workflow.js` | Extra styles and the click-to-explore behaviour for the n8n page only |
 | `assets/js/copy-email.js` | The "Copy email" button |
 | `assets/fonts/`, `assets/img/` | Fonts, your photo, project images and one preview card per case study |
-| `docs/` | The case-study PDFs, renamed and titled for search. PhonePe and the Porter supporting artifacts have personal names redacted |
+| `docs/` | The case-study PDFs, renamed and titled for search (PhonePe and the Porter supporting artifacts have personal names redacted), plus the n8n workflow file with your sheet ID, email and credential IDs replaced by placeholders |
 | `prototype/porter/` | The Porter prototype, hosted on your own site (hidden from Google on purpose) |
+| `workradar/` | The WorkRadar app as one self-contained page, built from your `workradar-mvp` repository with sample data (hidden from Google on purpose; the home page card is what gets indexed) |
 | `.nojekyll` | Tells GitHub Pages to serve files as they are |
 
 ## Put it online with GitHub Pages (free)

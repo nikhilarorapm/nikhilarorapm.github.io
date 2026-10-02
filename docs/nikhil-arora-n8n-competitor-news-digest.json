@@ -1,0 +1,656 @@
+{
+  "name": "Competitor News Daily Digest",
+  "nodes": [
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "YOUR_SHEET_ID",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Sheet1",
+          "mode": "name"
+        },
+        "options": {}
+      },
+      "id": "696ba9dd-d37b-4939-b463-23a66b813849",
+      "name": "Get row(s) in sheet",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        240,
+        208
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "",
+          "name": "Google Sheets OAuth2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://google.serper.dev/news",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ q: $json.Query, num: 10, tbs: \"qdr:w\" }) }}",
+        "options": {}
+      },
+      "id": "a951a6d9-790d-41b2-98d5-886ae586875c",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.5,
+      "position": [
+        464,
+        208
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "",
+          "name": "Serper API Key"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "news",
+        "options": {}
+      },
+      "id": "49a954e4-9eab-4c95-9f97-f2d8e33289c6",
+      "name": "Split Out",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        688,
+        208
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "bcad1cdc-4587-48bb-80ee-2654d36fb68a",
+              "name": "competitor",
+              "value": "={{ $('Get row(s) in sheet').item.json.Name }}",
+              "type": "string"
+            },
+            {
+              "id": "6f961218-03c5-46ca-bbff-0c0d43e414e3",
+              "name": "url",
+              "value": "={{ $json.link }}",
+              "type": "string"
+            },
+            {
+              "id": "1fe227f2-a2b5-4d5f-82a8-5a457ca01b4b",
+              "name": "description",
+              "value": "={{ $json.snippet }}",
+              "type": "string"
+            },
+            {
+              "id": "0785eb4f-a91a-4aff-a399-8d062f7d59e3",
+              "name": "title",
+              "value": "={{ $json.title }}",
+              "type": "string"
+            },
+            {
+              "id": "997c933d-9bfd-496a-a9f9-d800818421d4",
+              "name": "source",
+              "value": "={{ $json.source }}",
+              "type": "string"
+            },
+            {
+              "id": "b997b93c-6ffb-4267-9b96-3eb52c2e63f2",
+              "name": "date",
+              "value": "={{ $json.date }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "17c471ad-0c1d-4e8f-bb9f-bd4ac56469d3",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        912,
+        208
+      ]
+    },
+    {
+      "parameters": {
+        "compare": "selectedFields",
+        "fieldsToCompare": "url",
+        "options": {}
+      },
+      "id": "e5620c05-7006-46a9-af08-cca4072b5eec",
+      "name": "Remove Duplicates",
+      "type": "n8n-nodes-base.removeDuplicates",
+      "typeVersion": 2,
+      "position": [
+        1136,
+        208
+      ]
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "destinationFieldName": "articles",
+        "options": {}
+      },
+      "id": "55a5a403-603c-4340-84a1-573e1b83c3a0",
+      "name": "Aggregate",
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        1360,
+        208
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are reviewing news articles gathered while tracking AI video generation\ncompetitors. Some are duplicate coverage of the same event from different\noutlets. Some mention multiple competitors in one roundup piece. Some\naren't really news about any tracked competitor at all, despite matching\nthe search.\n\nArticles:\n{{ JSON.stringify($json.articles) }}\n\nSTEP 1 — Group into distinct real-world stories.\n\nTwo articles are the SAME story only if they describe the same specific\nevent or announcement (e.g., the same funding round, the same launch).\nSimilar topic or genre is NOT enough — do not merge separate comparison\narticles or separate listicles just because they cover similar ground.\n\nExample — SAME story: \"Kling 3.0 raises $2.8B\" + \"Kling captures majority\nof July funding\" (same funding round, different outlets).\nExample — DIFFERENT stories: \"Top 10 AI Video Tools\" listicle + \"Seedance\nvs Kling\" comparison article (different pieces, just similar topic, even\nif both mention the same competitors).\n\nFor each story, list every tracked competitor it's genuinely about.\n\nSTEP 2 — Judge relevance for each story.\n\nMark relevant: true if the article is substantively about the tracked\ncompetitor itself — its product, technology, business, funding,\npartnerships, or strategy. This includes factual descriptions, reviews,\nand comparisons of the product, not just breaking-news events.\n\nMark relevant: false if any of the following apply:\n- The competitor's name isn't actually mentioned (being topically about\n  AI video in general is not enough on its own).\n- The article is really about something else — a third party's content,\n  project, or story — that merely happens to use or mention the\n  competitor's tool in passing, rather than being about the competitor\n  itself. Example: a meme video \"made with\" a competitor's tool is about\n  the meme, not the competitor — mark false.\n- The article is a generic listicle or roundup that mentions the\n  competitor's name only as one entry among many, with no real\n  substance about that competitor specifically.\n\nOne exception: a personnel move (an executive or employee leaving the\ncompetitor) IS relevant, even though the article's nominal subject is\ntheir new venture — it signals something real about the competitor's\ntalent and strategy. Mark these true.\n\nReturn only a JSON object with a \"stories\" key. For each story, include\nevery field (url, title, description, source, date) for every article\nin that story, not just the URL — the next step needs this content to\nwrite from.",
+        "hasOutputParser": true,
+        "batching": {}
+      },
+      "id": "cba599ee-f9fc-4f1d-a4cb-d5484e2acc9d",
+      "name": "Basic LLM Chain",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.9,
+      "position": [
+        1616,
+        208
+      ]
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-3.6-flash",
+        "options": {}
+      },
+      "id": "d829f9ae-9391-427a-9a60-0b3db065f8bc",
+      "name": "Google Gemini Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1.1,
+      "position": [
+        1592,
+        440
+      ],
+      "credentials": {
+        "googlePalmApi": {
+          "id": "",
+          "name": "Google Gemini"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"stories\": [\n    {\n      \"competitors\": [\"Kling AI\"],\n      \"articles\": [\n        {\"url\": \"https://example.com/a\", \"title\": \"...\", \"description\": \"...\", \"source\": \"...\", \"date\": \"...\"}\n      ],\n      \"relevant\": true\n    }\n  ]\n}",
+        "autoFix": true
+      },
+      "id": "d8418ece-83cb-4084-ad84-dc51efacc77e",
+      "name": "Structured Output Parser",
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        1720,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-3.1-flash-lite",
+        "options": {}
+      },
+      "id": "aaae689c-0ffe-4b6f-b8e0-7a51407ea765",
+      "name": "Google Gemini Chat Model1",
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1.1,
+      "position": [
+        1800,
+        648
+      ],
+      "credentials": {
+        "googlePalmApi": {
+          "id": "",
+          "name": "Google Gemini"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "output.stories",
+        "options": {}
+      },
+      "id": "349a3f10-a19f-4c07-addb-57682067b5c6",
+      "name": "Split Out1",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        2080,
+        208
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "62781349-44a1-4444-b359-d9289521b973",
+              "leftValue": "={{ $json.relevant }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "f42bd512-9737-42bb-bbd0-abd35300467b",
+      "name": "Filter",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.3,
+      "position": [
+        2304,
+        208
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are writing one entry for a competitor-tracking digest read by a\nsenior product manager. Be specific: name products, dollar amounts, and\ncompanies exactly. No vague adjectives like \"innovative\" or \"game-changing\".\n\nOnly use facts actually present in the title/description below. If a\nspecific detail (dollar amount, investor name, partner name) isn't in the\nsource text, don't invent one — write a shorter, more general summary\ninstead of a specific-sounding but fabricated one.\n\nStory (competitors: {{ $json.competitors.join(', ') }}):\n{{ JSON.stringify($json.articles) }}\n\nSUMMARY: 2-3 sentences, under 300 characters. Combine the most complete\nfacts across every article — if one outlet has a number and another names\na person or partner, include both. If the story involves multiple tracked\ncompetitors, make clear how each is involved.\n\nCATEGORY: exactly one of: Product Launch, Funding, Partnership,\nHiring/Leadership, Acquisition, Reviews & Comparisons, Company Update, Other.\n\nCategorize by what the story means for the TRACKED COMPETITOR, not by the\narticle's nominal subject. Example: an executive leaving the competitor to\nfound a new company is Hiring/Leadership, not Product Launch.\n\nFunding means the company RAISED outside investment (a round, a named\ninvestor). Revenue, ARR, valuation mentioned without a round, or other\nfinancial metrics are Company Update, not Funding — these are different\neven though both involve dollar figures.\n\nReviews & Comparisons: third-party articles reviewing or comparing the\nproduct against others, with no other news content.\n\nOther: generic descriptions or mentions with no real news value at all.\n\nLINK: copy one URL exactly as it appears in the articles above — prefer the\none with the most specific, sourced detail. Never modify or construct a URL.\n\nReturn only a JSON object, no other text:\n{\"summary\": \"...\", \"category\": \"Funding\", \"link\": \"https://...\"}",
+        "hasOutputParser": true,
+        "batching": {}
+      },
+      "id": "374046a1-284b-4ee1-8ba1-5316c8b71dbd",
+      "name": "Basic LLM Chain1",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.9,
+      "position": [
+        2560,
+        208
+      ]
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-3.1-flash-lite",
+        "options": {}
+      },
+      "id": "40c0e36c-5363-44dc-8050-7b8acc93b60b",
+      "name": "Google Gemini Chat Model3",
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1.1,
+      "position": [
+        2536,
+        440
+      ],
+      "credentials": {
+        "googlePalmApi": {
+          "id": "",
+          "name": "Google Gemini"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"summary\": { \"type\": \"string\" },\n    \"category\": {\n      \"type\": \"string\",\n      \"enum\": [\"Product Launch\", \"Funding\", \"Partnership\", \"Hiring/Leadership\", \"Acquisition\", \"Reviews & Comparisons\", \"Company Update\", \"Other\"]\n    },\n    \"link\": { \"type\": \"string\" }\n  },\n  \"required\": [\"summary\", \"category\", \"link\"]\n}",
+        "autoFix": true
+      },
+      "id": "f0474ba7-c717-496b-9bed-fa8a1f2e5413",
+      "name": "Structured Output Parser1",
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        2664,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-3.1-flash-lite",
+        "options": {}
+      },
+      "id": "70228259-175b-4c19-b584-8f83667c8272",
+      "name": "Google Gemini Chat Model2",
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1.1,
+      "position": [
+        2744,
+        648
+      ],
+      "credentials": {
+        "googlePalmApi": {
+          "id": "",
+          "name": "Google Gemini"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "1c605d86-0b14-43a5-af43-708e362645a3",
+              "name": "competitors",
+              "value": "={{ $('Filter').item.json.competitors }}",
+              "type": "array"
+            },
+            {
+              "id": "1fb1f19f-60eb-4546-8550-4a32e69371e9",
+              "name": "loggedDate",
+              "value": "={{ $now.toFormat('yyyy-MM-dd') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "id": "3949b6fe-9285-4c70-a909-ede99bfbbcf1",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        3024,
+        208
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const CATEGORY_ORDER = [\n  \"Product Launch\", \"Funding\", \"Partnership\", \"Acquisition\",\n  \"Hiring/Leadership\", \"Reviews & Comparisons\", \"Company Update\", \"Other\"\n];\n\nconst normalize = s => (s || \"\").trim().toLowerCase();\nconst categoryMap = Object.fromEntries(CATEGORY_ORDER.map(c => [normalize(c), c]));\n\nconst stories = $input.all().map(item => ({\n  ...item.json.output,\n  competitors: item.json.competitors\n}));\n\nconst grouped = {};\nfor (const story of stories) {\n  const matched = categoryMap[normalize(story.category)] || \"Other\";\n  if (!grouped[matched]) grouped[matched] = [];\n  grouped[matched].push(story);\n}\n\nconst dateStr = $now.toFormat('MMM d');\nlet html = `<h2>Competitor Digest — ${dateStr}</h2>`;\n\nfor (const category of CATEGORY_ORDER) {\n  if (!grouped[category]) continue;\n  html += `<h3>${category}</h3><ul>`;\n  for (const story of grouped[category]) {\n    const names = story.competitors.join(', ');\n    html += `<li><strong>${names}</strong> — ${story.summary} <a href=\"${story.link}\">View</a></li>`;\n  }\n  html += `</ul>`;\n}\n\nreturn [{ json: { html, subject: `Competitor Digest — ${dateStr}` } }];"
+      },
+      "id": "5d0c1cf2-af50-4b1e-8196-7a243f7d00d8",
+      "name": "Code in JavaScript",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3248,
+        208
+      ]
+    },
+    {
+      "parameters": {
+        "sendTo": "you@example.com",
+        "subject": "Competitor news daily digest",
+        "message": "={{ $json.html }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        3472,
+        208
+      ],
+      "id": "bccb060e-ee8b-4576-874f-717cd1c4dba9",
+      "name": "Send a message",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "",
+          "name": "Gmail OAuth2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 8
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        16,
+        208
+      ],
+      "id": "c839e39c-c6c2-4b4b-a952-6e9f61655757",
+      "name": "Schedule Trigger"
+    }
+  ],
+  "connections": {
+    "Get row(s) in sheet": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Remove Duplicates",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Remove Duplicates": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain": {
+      "main": [
+        [
+          {
+            "node": "Split Out1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Structured Output Parser",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out1": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model3": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser1": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Basic LLM Chain1",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Structured Output Parser1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "tags": []
+}

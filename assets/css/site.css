@@ -153,6 +153,7 @@ a:hover{color:var(--accent)}
 .methods b,.tools b{font-weight:500;letter-spacing:.1em;text-transform:uppercase;margin-right:6px}
 .small-note{font-size:.88rem;color:var(--muted)}
 .build .doc-link{margin-top:auto;padding-top:6px}
+.build-links{display:flex;flex-wrap:wrap;align-items:center;gap:12px 22px;margin-top:auto;padding-top:8px}
 .case-links{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 22px;margin-top:auto;padding-top:6px}
 
 /* AI builds */
@@ -217,8 +218,8 @@ a:hover{color:var(--accent)}
 }
 
 /* Links in titles, tags */
-.flag-title a,.case h3 a{text-decoration:none}
-.flag-title a:hover,.case h3 a:hover{color:var(--ink);text-decoration:underline;text-decoration-thickness:2px}
+.flag-title a,.case h3 a,.build h3 a{text-decoration:none}
+.flag-title a:hover,.case h3 a:hover,.build h3 a:hover{color:var(--ink);text-decoration:underline;text-decoration-thickness:2px}
 .doc-link svg{width:14px;height:14px;align-self:center;flex:none}
 .tag{display:inline-block;margin-left:6px;padding:1px 7px;border-radius:4px;background:var(--accent);color:var(--accent-ink);font-family:var(--font-mono);font-weight:500;font-size:.66rem;line-height:1.5;letter-spacing:.06em;text-transform:uppercase;vertical-align:2px;white-space:nowrap}
 .tag-muted{background:transparent;color:var(--muted);border:1px solid var(--rule-strong)}

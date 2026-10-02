@@ -93,7 +93,8 @@
         {"@type": "ListItem", "position": 2, "item": {"@type": "CreativeWork", "name": "PhonePe Send Money: UX audit and redesign", "url": "https://nikhilarorapm.github.io/case-studies/phonepe-ux-audit.html", "author": {"@id": "https://nikhilarorapm.github.io/#person"}, "description": "Heuristic evaluation of PhonePe's UPI Send Money flow with Figma redesign recommendations."}},
         {"@type": "ListItem", "position": 3, "item": {"@type": "CreativeWork", "name": "Growing X: AARRR funnel teardown and RICE-ranked epics", "url": "https://nikhilarorapm.github.io/case-studies/x-growth-aarrr.html", "author": {"@id": "https://nikhilarorapm.github.io/#person"}, "description": "AARRR funnel analysis of X built on primary research, with five gaps, three epics and RICE prioritisation."}},
         {"@type": "ListItem", "position": 4, "item": {"@type": "CreativeWork", "name": "Zepto AOV: closing the order-value gap with Blinkit", "url": "https://nikhilarorapm.github.io/case-studies/zepto-aov.html", "author": {"@id": "https://nikhilarorapm.github.io/#person"}, "description": "Average order value case study for Zepto: KPI tree, segmentation, five blockers, three solutions and a RICE-sequenced roadmap."}},
-        {"@type": "ListItem", "position": 5, "item": {"@type": "CreativeWork", "name": "Zomato: engagement and retention in Tier-1 cities", "url": "https://nikhilarorapm.github.io/case-studies/zomato-retention.html", "author": {"@id": "https://nikhilarorapm.github.io/#person"}, "description": "Funnel analysis, cohort retention and North Star metrics for Zomato food delivery."}}
+        {"@type": "ListItem", "position": 5, "item": {"@type": "CreativeWork", "name": "Zomato: engagement and retention in Tier-1 cities", "url": "https://nikhilarorapm.github.io/case-studies/zomato-retention.html", "author": {"@id": "https://nikhilarorapm.github.io/#person"}, "description": "Funnel analysis, cohort retention and North Star metrics for Zomato food delivery."}},
+        {"@type": "ListItem", "position": 6, "item": {"@type": "CreativeWork", "name": "Competitor News Daily Digest in n8n", "url": "https://nikhilarorapm.github.io/ai-builds/n8n-competitor-news-digest.html", "author": {"@id": "https://nikhilarorapm.github.io/#person"}, "description": "An n8n workflow that clusters and summarises a week of AI video competitor news with two Gemini models and emails a categorised digest."}}
       ]
     }
   ]
@@ -108,7 +109,7 @@
     <a class="brand" href="#top">Nikhil Arora</a>
     <nav class="site-nav" aria-label="Sections">
       <a href="#work">Work</a>
-      <a class="opt" href="#ai-builds">AI builds</a>
+      <a class="opt" href="#case-studies">Case studies</a>
       <a class="opt" href="#education">Education</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -122,7 +123,6 @@
       <h1 id="hero-title"><span class="h1-name">Nikhil Arora</span><span class="vh">, </span><span class="h1-role">Associate Product Manager &amp; Product Analyst</span></h1>
       <p class="lede">I find the barrier that actually blocks users, size what fixing it is worth, and prototype the fix. BITS Pilani engineer and graduate of Airtribe's AI-First Product Management program.</p>
       <div class="cta-row">
-        <a class="btn btn-primary" href="#porter">See the Porter case study</a>
         <a class="btn" href="https://www.linkedin.com/in/nikhilarora2021" target="_blank" rel="me noopener">LinkedIn</a>
         <a class="btn" href="#contact">Contact</a>
       </div>
@@ -236,18 +236,18 @@
     <h2 class="label" id="builds-title">AI builds</h2>
     <div class="sec-body build-grid">
       <article class="build" id="workradar" aria-labelledby="workradar-title">
-        <p class="kicker">AI-built MVP</p>
-        <h3 id="workradar-title">WorkRadar: a morning dashboard for engineering managers</h3>
-        <p>One view of a team's day: top work, what happened, what needs attention and who is blocked. I took it from PRD to five high-fidelity screens to a working mock-data web app.</p>
+        <p class="kicker">AI-built MVP · Live</p>
+        <h3 id="workradar-title"><a href="workradar/index.html">WorkRadar: a morning dashboard for engineering managers</a></h3>
+        <p>One view of a team's day: top work, what happened, what needs attention and who is blocked. I took it from PRD to five high-fidelity screens to a working web app you can try, with sample data.</p>
         <p class="tools"><b>Built with</b>ChatPRD · Figma Make · Replit Agent · Claude</p>
-        <a class="doc-link" href="docs/nikhil-arora-workradar-prd-ai-workflow.pdf">PRD and AI workflow <span class="meta">PDF · 4 pages</span></a>
+        <p class="build-links"><a class="btn btn-primary" href="workradar/index.html">Open the live app <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="doc-link" href="docs/nikhil-arora-workradar-prd-ai-workflow.pdf">PRD and AI workflow <span class="meta">PDF · 4 pages</span></a></p>
       </article>
       <article class="build" id="news-digest" aria-labelledby="digest-title">
-        <p class="kicker">Workflow automation</p>
-        <h3 id="digest-title">Competitor News Daily Digest in n8n</h3>
-        <p>Every morning at 8 AM it pulls the last 24 hours of news on five AI video companies, drops duplicates, clusters stories with one model and summarises them with a lighter one, then emails a categorised digest.</p>
+        <p class="kicker">Workflow automation · Interactive</p>
+        <h3 id="digest-title"><a href="ai-builds/n8n-competitor-news-digest.html">Competitor News Daily Digest in n8n</a></h3>
+        <p>Built to run every morning at 8 AM: it pulls the past week's news on five AI video companies, drops duplicates, clusters stories with one model and summarises them with a lighter one, then emails a categorised digest.</p>
         <p class="tools"><b>Built with</b>n8n · Serper · Gemini · Google Sheets · Gmail</p>
-        <a class="doc-link" href="docs/nikhil-arora-n8n-competitor-news-digest.pdf">Workflow write-up <span class="meta">PDF · 8 pages</span></a>
+        <p class="build-links"><a class="btn btn-primary" href="ai-builds/n8n-competitor-news-digest.html">Explore the workflow <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="doc-link" href="docs/nikhil-arora-n8n-competitor-news-digest.pdf">Workflow write-up <span class="meta">PDF · 8 pages</span></a></p>
       </article>
       <article class="build" id="prd-prompt" aria-labelledby="prompt-title">
         <p class="kicker">Prompt engineering</p>
