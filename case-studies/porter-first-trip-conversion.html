@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Porter Case Study: First-Trip Completion | Nikhil Arora</title>
+<meta name="description" content="How I found what stops first-time Porter customers, sized the fix at ₹42.8 Cr a year and prototyped an AI vehicle-sizing assistant.">
+<link rel="canonical" href="https://nikhilarorapm.github.io/case-studies/porter-first-trip-conversion.html">
+<meta name="author" content="Nikhil Arora">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#F4F6F3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E1411" media="(prefers-color-scheme: dark)">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Nikhil Arora">
+<meta property="og:locale" content="en_IN">
+<meta property="og:url" content="https://nikhilarorapm.github.io/case-studies/porter-first-trip-conversion.html">
+<meta property="og:title" content="Porter Case Study: First-Trip Completion | Nikhil Arora">
+<meta property="og:description" content="How I found what stops first-time Porter customers, sized the fix at ₹42.8 Cr a year and prototyped an AI vehicle-sizing assistant.">
+<meta property="og:image" content="https://nikhilarorapm.github.io/assets/img/og-porter.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Case study: Building first-time confidence at Porter, an AI vehicle-sizing assistant.">
+<meta property="article:published_time" content="2026-10-01">
+<meta property="article:author" content="https://nikhilarorapm.github.io/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Porter Case Study: First-Trip Completion | Nikhil Arora">
+<meta name="twitter:description" content="How I found what stops first-time Porter customers, sized the fix at ₹42.8 Cr a year and prototyped an AI vehicle-sizing assistant.">
+<meta name="twitter:image" content="https://nikhilarorapm.github.io/assets/img/og-porter.jpg">
+
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="manifest" href="../site.webmanifest">
+<link rel="preload" href="../assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/css/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://nikhilarorapm.github.io/case-studies/porter-first-trip-conversion.html#article",
+      "headline": "Building first-time confidence at Porter",
+      "description": "How I found what stops first-time Porter customers, sized the fix at ₹42.8 Cr a year and prototyped an AI vehicle-sizing assistant.",
+      "url": "https://nikhilarorapm.github.io/case-studies/porter-first-trip-conversion.html",
+      "mainEntityOfPage": "https://nikhilarorapm.github.io/case-studies/porter-first-trip-conversion.html",
+      "image": "https://nikhilarorapm.github.io/assets/img/og-porter.jpg",
+      "datePublished": "2026-10-01",
+      "dateModified": "2026-10-01",
+      "inLanguage": "en-IN",
+      "author": {
+        "@type": "Person",
+        "@id": "https://nikhilarorapm.github.io/#person",
+        "name": "Nikhil Arora",
+        "url": "https://nikhilarorapm.github.io/"
+      },
+      "publisher": {
+        "@type": "Person",
+        "@id": "https://nikhilarorapm.github.io/#person",
+        "name": "Nikhil Arora",
+        "url": "https://nikhilarorapm.github.io/"
+      },
+      "isPartOf": {
+        "@id": "https://nikhilarorapm.github.io/#website"
+      },
+      "about": {
+        "@type": "Organization",
+        "name": "Porter"
+      },
+      "keywords": "Porter case study, first-trip conversion, vehicle sizing, user research, RICE, PRD, product management"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Nikhil Arora",
+          "item": "https://nikhilarorapm.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Building first-time confidence at Porter",
+          "item": "https://nikhilarorapm.github.io/case-studies/porter-first-trip-conversion.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-head">
+  <div class="wrap head-row">
+    <a class="brand" href="../index.html">Nikhil Arora</a>
+    <nav class="site-nav" aria-label="Sections">
+      <a href="../index.html#work">Work</a>
+      <a class="opt" href="../index.html#ai-builds">AI builds</a>
+      <a class="opt" href="../index.html#education">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="../index.html">Nikhil Arora</a></li><li><a href="../index.html#case-studies">Case studies</a></li><li aria-current="page">Porter</li></ol></nav>
+  </div>
+  <article class="wrap cs" aria-labelledby="cs-title">
+    <header class="cs-head">
+      <p class="kicker">Airtribe capstone · Logistics marketplace</p>
+      <h1 id="cs-title">Building first-time confidence at Porter</h1>
+      <p class="cs-lede">An AI vehicle-sizing assistant that helps first-time customers choose the right vehicle, so more of them complete a first trip.</p>
+      <dl class="cs-meta"><div><dt class="label">Context</dt><dd>Capstone, Airtribe AI-First Product Management</dd></div><div><dt class="label">Completed</dt><dd>August 2026</dd></div><div><dt class="label">Methods</dt><dd>Review mining, survey, interviews, competitive analysis, RICE, PRD</dd></div><div><dt class="label">Prototype</dt><dd>Interactive, built with Claude</dd></div></dl>
+    </header>
+    <figure class="cs-hero"><img src="../assets/img/porter-prototype-screens-800.webp" srcset="../assets/img/porter-prototype-screens-800.webp 800w, ../assets/img/porter-prototype-screens-1600.webp 1600w" sizes="(min-width: 1160px) 1060px, 92vw" width="800" height="573" alt="Three prototype screens: vehicle selection with a new entry point, a Canter 14ft recommendation with its reasoning, and a load check before a driver is sent." fetchpriority="high" decoding="async"><figcaption>Prototype screens: the new entry point above Porter's vehicle grid, a recommendation with its reasoning, and the load check that fires before a driver is assigned.</figcaption></figure>
+    <div class="cs-layout">
+      <nav class="toc" aria-label="On this page"><p class="label">On this page</p><ol><li><a href="#brief">The brief</a></li><li><a href="#research">Research</a></li><li><a href="#barrier">The real barrier</a></li><li><a href="#segments">Customer types</a></li><li><a href="#competitors">Competitors</a></li><li><a href="#choice">Why vehicle fit</a></li><li><a href="#sizing">Sizing</a></li><li><a href="#prioritisation">Prioritisation</a></li><li><a href="#solution">The solution</a></li><li><a href="#rollout">Rollout</a></li><li><a href="#measurement">Measurement</a></li><li><a href="#risks">Risks</a></li><li><a href="#limits">Limits</a></li><li><a href="#documents">Documents</a></li></ol></nav>
+      <div class="cs-body">
+<section class="summary" aria-labelledby="summary-h">
+<h2 class="label" id="summary-h">Summary</h2>
+<dl><div><dt class="label">Problem</dt><dd>59% of first-time customers who reach vehicle selection never complete a trip.</dd></div><div><dt class="label">What I found</dt><dd>Vehicle-fit uncertainty shows up in just 2% of Porter reviews, yet all three research sources named it, and it gates the whole funnel.</dd></div><div><dt class="label call">The call</dt><dd>Built a vehicle-sizing assistant (RICE 0.90) over two options that scored 2.40, because neither answered the barrier directly.</dd></div><div><dt class="label">Value</dt><dd>₹42.8 Cr a year if completion reaches the 58% target; ₹28.6–57.1 Cr across the key assumption.</dd></div></dl>
+</section>
+<section class="cs-sec" id="brief" aria-labelledby="brief-h">
+<h2 id="brief-h">The brief</h2>
+<p>Porter serves about 30 lakh intra-city customers a month. About 10 lakh are individual customers, the segment in scope, and 41% of them complete a first trip once they reach the vehicle-selection screen. The brief set the target at 58% within six months.</p>
+<p>Two lines in the brief shaped every decision. The funnel opens at vehicle selection, so acquisition is not the problem. And success is a completed trip, not a placed booking, so a fix that pushes more badly sized bookings into fulfilment would move the wrong number and hurt the customer.</p>
+<figure class="meter">
+<figcaption><span class="label">First-trip completion</span><p class="meter-note">From vehicle selection to a completed trip within seven days, for first-time individual customers. Both numbers come from the brief.</p></figcaption>
+<div class="track" role="img" aria-label="41% today; target 58%"><span class="target"></span><span class="now"></span></div>
+<div class="ticks" aria-hidden="true"><span class="t-now">41% today</span><span class="t-target">58% target</span><span class="t-start">0%</span><span class="t-end">100%</span></div>
+</figure>
+</section>
+<section class="cs-sec" id="research" aria-labelledby="research-h">
+<h2 id="research-h">Research: two kinds of evidence, kept apart</h2>
+<p>I kept collected evidence and elicited evidence apart, so each could cover what the other can't see.</p>
+<div class="table-scroll"><table class="data-table"><thead><tr><th scope="col">Method</th><th scope="col">Sample</th><th scope="col">Why it matters</th></tr></thead><tbody><tr><th scope="row">Review mining</th><td>427 Google Play reviews: Porter 220, Rapido 180, Uber 27 (India-filtered)</td><td>Unprompted. Nobody was asked about vehicle size, so nobody was led toward it. Rapido and Uber separate goods-transport barriers from the quirks of one app.</td></tr><tr><th scope="row">Survey</th><td>17 responses: a product-management WhatsApp community (7) and a SurveySwap panel (10)</td><td>Fourteen questions, ordered so unaided recall of pre-booking doubts came before any question named a barrier.</td></tr><tr><th scope="row">Interviews</th><td>4 WhatsApp conversations with the same opening prompt</td><td>One was logged and excluded from every finding because the reply wasn't first-hand.</td></tr><tr><th scope="row">Competitor research</th><td>6 operators across 3 markets</td><td>Booking flows and sizing guidance read directly, not inferred from complaints.</td></tr></tbody></table></div>
+</section>
+<section class="cs-sec" id="barrier" aria-labelledby="barrier-h">
+<h2 id="barrier-h">The loudest complaint isn't the real barrier</h2>
+<div class="pair">
+<div class="table-scroll"><table class="data-table"><caption class="label">By review volume (220 Porter reviews)</caption><thead><tr><th scope="col">Barrier</th><th scope="col" class="n">Share</th></tr></thead><tbody><tr><th scope="row">Support unresponsive</th><td class="n">20%</td></tr><tr><th scope="row">Price opacity</th><td class="n">10%</td></tr><tr><th scope="row">Trust in an unfamiliar app</th><td class="n">9%</td></tr><tr><th scope="row">Tracking visibility</th><td class="n">6%</td></tr><tr><th scope="row">Damage handling</th><td class="n">5%</td></tr><tr class="hl"><th scope="row">Vehicle-fit uncertainty</th><td class="n">2%</td></tr></tbody></table></div>
+<div class="table-scroll"><table class="data-table"><caption class="label">By independent sources</caption><thead><tr><th scope="col">Barrier</th><th scope="col" class="n">Sources</th></tr></thead><tbody><tr class="hl"><th scope="row">Vehicle-fit uncertainty</th><td class="n">3 of 3</td></tr><tr><th scope="row">Price opacity</th><td class="n">3 of 3</td></tr><tr><th scope="row">Loading responsibility</th><td class="n">3 of 3</td></tr><tr><th scope="row">Trust in an unfamiliar app</th><td class="n">2 of 3</td></tr><tr><th scope="row">Damage handling</th><td class="n">2 of 3</td></tr><tr><th scope="row">Support unresponsive</th><td class="n">1 of 3</td></tr></tbody></table></div>
+</div>
+<p>A customer who couldn't size a load and left never wrote a review. The review corpus is blind to the barrier that stops people before they transact, so vehicle fit is the lowest-volume tag of any barrier all three sources named. The gap between the two rankings is the finding, not a weakness in the data.</p>
+</section>
+<section class="cs-sec" id="segments" aria-labelledby="segments-h">
+<h2 id="segments-h">Three types of first-time customer</h2>
+<h3>The Cautious First-Timer</h3>
+<p>Wants to try Porter and arrives with more open questions than the booking flow answers. The closest of the three to the conversion metric.</p>
+<blockquote class="quote"><p>“Which vehicle size I needed; whether my stuff would actually fit; what the total cost would be.”</p></blockquote>
+<h3>The Abandoner</h3>
+<p>Opens the app, starts a booking and walks away before the trip happens. This is mid-funnel abandonment, the exact failure the brief measures.</p>
+<blockquote class="quote"><p>“Eventually I ended up not using the service.”</p></blockquote>
+<h3>The Offline Loyalist</h3>
+<p>Has bulky items to move, knows the apps exist, and calls a person instead, every time. The competition here is a phone call, not another app.</p>
+<blockquote class="quote"><p>“If I had more information about the reliability and safety of the app-based services, I might have considered trying one.”</p></blockquote>
+<p>A second survey wave added six responses. Every one fitted an existing type without forcing a fourth.</p>
+</section>
+<section class="cs-sec" id="competitors" aria-labelledby="competitors-h">
+<h2 id="competitors-h">Nobody answers “which vehicle?” inside the flow</h2>
+<div class="table-scroll"><table class="data-table wide"><thead><tr><th scope="col">Operator</th><th scope="col">Market</th><th scope="col">What the customer gets</th><th scope="col">Sizing help</th></tr></thead><tbody><tr><th scope="row">Porter</th><td>India</td><td>A vehicle grid with weight limits and example loads; the catalogue varies by city</td><td>Nothing in the flow</td></tr><tr><th scope="row">Lalamove</th><td>Asia, Europe</td><td>Four categories described by example items, then manual selection</td><td>A blog guide, off the flow</td></tr><tr><th scope="row">U-Haul</th><td>United States</td><td>A room-by-room table matching home size to truck size, self-assessment factors and a supplies calculator</td><td>A help article, off the flow</td></tr><tr><th scope="row">MOVER, Borzo, Uncle Delivery, BlackBuck</th><td>India</td><td>Positioned by use case; any suggestion is by delivery purpose, not by what's moved</td><td>Nothing</td></tr><tr><th scope="row">The offline operator</th><td>India</td><td>A person who asks what you're moving and sizes the job before you commit</td><td>In the conversation itself</td></tr></tbody></table></div>
+<p>A company U-Haul's size doesn't build a room-by-room sizing guide unless customers keep getting it wrong. But it's a help article, not a step in the flow, so the work still sits with the customer at the moment they're least able to do it. The only competitor that does the translation for the customer is the one without an app.</p>
+</section>
+<section class="cs-sec" id="choice" aria-labelledby="choice-h">
+<h2 id="choice-h">Why vehicle fit, out of three converging barriers</h2>
+<p>Three barriers were named by every source. Price opacity is real, but it looks the same at every competitor and its fix crosses into the pricing engine, which the brief puts out of scope. Loading responsibility is genuinely unaddressed and stays on the list as a named gap. Vehicle fit won on four counts, in priority order:</p>
+<ol>
+<li><strong>It gates everything.</strong> Vehicle selection is mandatory, so every customer in the 41% passes through it. Every other barrier depends on this step succeeding first.</li>
+<li><strong>It fails in both places.</strong> It can kill the booking or kill the trip, which is exactly what the success definition covers.</li>
+<li><strong>It belongs to this category.</strong> It's absent from both ride-hailing corpora, because neither Rapido nor Uber asks a customer to size a load.</li>
+<li><strong>Customers named the fix.</strong> Unprompted, in a question that never mentioned vehicles, one respondent asked for “scanning my things and telling me approx which size vehicle would I need.”</li>
+</ol>
+</section>
+<section class="cs-sec" id="sizing" aria-labelledby="sizing-h">
+<h2 id="sizing-h">Sizing the opportunity</h2>
+<ul class="stats"><li><span class="num">30 lakh</span><span class="lbl">Porter intra-city customers a month (total market)</span></li><li><span class="num">10 lakh</span><span class="lbl">individual customers a month (serviceable)</span></li><li><span class="num">1.5 lakh</span><span class="lbl">first-timers reaching vehicle selection a month (obtainable)</span></li><li><span class="num">₹42.8 Cr</span><span class="lbl">net expected value a year at the 58% target</span></li></ul>
+<p>Only the obtainable layer is claimed. The ₹42.8 Cr is net expected value across 18 lakh first-time customers a year, on a 24-month lifetime-value horizon. The softest input is the first-timer share: at 10% the value is ₹28.6 Cr, at 20% it's ₹57.1 Cr. The case for building holds across the range; only its size moves.</p>
+<p>Per customer who reaches vehicle selection, expected value rises from ₹324 to ₹562 (+73%), and completed first trips go from about 61,500 to 87,000 a month.</p>
+<p class="small-note">The brief supplies 41%, 58% and the customer base. Volumes, order value and repeat rate are my stated assumptions, marked as such throughout the pack.</p>
+</section>
+<section class="cs-sec" id="prioritisation" aria-labelledby="prioritisation-h">
+<h2 id="prioritisation-h">Prioritisation: ten solutions, one call</h2>
+<div class="table-scroll"><table class="data-table wide"><caption class="label">RICE scores for all ten solutions</caption><thead><tr><th scope="col">Solution</th><th scope="col" class="n">Reach / mo</th><th scope="col" class="n">Impact</th><th scope="col" class="n">Conf.</th><th scope="col" class="n">Effort</th><th scope="col" class="n">Score</th></tr></thead><tbody><tr class="hl"><th scope="row">Vehicle-sizing assistant: describe or photograph the load, get a vehicle with reasons <span class="tag">Built</span></th><td class="n">1.50 L</td><td class="n">3</td><td class="n">80%</td><td class="n">4</td><td class="n">0.90</td></tr><tr><th scope="row">Guided item configurator: rules-based lookup, no model <span class="tag tag-muted">Runner-up</span></th><td class="n">1.50 L</td><td class="n">2</td><td class="n">80%</td><td class="n">1</td><td class="n">2.40</td></tr><tr><th scope="row">Capacity confirmation before dispatch</th><td class="n">0.82 L</td><td class="n">2</td><td class="n">80%</td><td class="n">2</td><td class="n">0.66</td></tr><tr><th scope="row">Itemised upfront fare breakdown</th><td class="n">1.50 L</td><td class="n">2</td><td class="n">80%</td><td class="n">1</td><td class="n">2.40</td></tr><tr><th scope="row">Pre-booking orientation on packing and lifting</th><td class="n">1.50 L</td><td class="n">2</td><td class="n">50%</td><td class="n">1</td><td class="n">1.50</td></tr><tr><th scope="row">First-time orientation content at the entry point</th><td class="n">1.50 L</td><td class="n">1</td><td class="n">50%</td><td class="n">1</td><td class="n">0.75</td></tr><tr><th scope="row">Pre-booking route and driver transparency</th><td class="n">1.50 L</td><td class="n">1</td><td class="n">50%</td><td class="n">2</td><td class="n">0.38</td></tr><tr><th scope="row">Save and resume on a mid-flow exit</th><td class="n">0.68 L</td><td class="n">2</td><td class="n">50%</td><td class="n">2</td><td class="n">0.34</td></tr><tr><th scope="row">Fare lock with an in-app dispute flag</th><td class="n">0.82 L</td><td class="n">1</td><td class="n">50%</td><td class="n">2</td><td class="n">0.21</td></tr><tr><th scope="row">Proactive trip-status updates</th><td class="n">0.82 L</td><td class="n">0.5</td><td class="n">25%</td><td class="n">2</td><td class="n">0.05</td></tr></tbody></table></div>
+<p class="small-note">Reach is customers a month, in lakh, at the moment the barrier strikes: 1.50 lakh first-timers reach vehicle selection, 0.82 lakh once a booking exists, 0.68 lakh on mid-flow exits. Effort is a person-week band of 1, 2 or 4, applied the same way to every row.</p>
+<p>Two solutions tie at the top and neither answers the primary barrier as directly. I built the vehicle-sizing assistant: the only option with maximum impact, the only one with a trust layer alongside the recommendation, and the one a customer asked for unprompted. The configurator came second, and I argued it in the deck rather than building it. A framework ranks; it doesn't decide.</p>
+<p>Both options buy certainty by adding a step to an on-demand flow, so time from vehicle selection to booking is measured per cohort. The trade-off is measured, not just named.</p>
+</section>
+<section class="cs-sec" id="solution" aria-labelledby="solution-h">
+<h2 id="solution-h">The solution</h2>
+<p>The assistant adds to Porter's flow at two points, both before a driver is dispatched. Trip details, fare estimate, pickup and transit stay untouched.</p>
+<ul>
+<li><strong>Vehicle-sizing assistant.</strong> One input bar for text and photos. It matches the load against past moves and shows the vehicle, the reasoning and comparable moves on one screen. If the description is too vague, it asks three questions instead of guessing. Accepting pre-fills the vehicle, and the full grid is always one tap away.</li>
+<li><strong>Load check.</strong> Fires only on three signals: a low-confidence recommendation accepted anyway, an override into a smaller vehicle, or a session that needed the extra questions.</li>
+<li><strong>Post-trip confirmation.</strong> One tap on what was moved and whether it fitted. It builds the evidence the next customer sees.</li>
+</ul>
+<figure class="fig"><img src="../assets/img/porter-experience-flow-640.webp" srcset="../assets/img/porter-experience-flow-640.webp 640w, ../assets/img/porter-experience-flow-1200.webp 1200w" sizes="(min-width: 980px) 760px, 92vw" width="640" height="360" loading="lazy" decoding="async" alt="Porter experience flow: the vehicle-sizing assistant and load check before dispatch, and a post-trip confirmation after the trip."><figcaption>The experience flow: two additions before dispatch, one prompt after the trip.</figcaption></figure>
+<h3>Why the check sits before dispatch, not at the curb</h3>
+<p>A capacity check at pickup was designed twice and rejected twice. At the curb, with the load half-carried, a driver naming a cash number beats any in-app flow. Before dispatch there's no driver to compete with, a switch is a re-selection rather than a re-assignment, and the cost of being wrong is a fare difference the customer chooses.</p>
+<h3>Design principles</h3>
+<ul>
+<li><strong>Opt-in, not a gate.</strong> The existing grid stays the default, so repeat and business customers aren't slowed down. The cost is that a customer who misses the prompt gets no help, so placement and wording are tested from the first cohort.</li>
+<li><strong>Reasoning is unavoidable.</strong> The vehicle, the reason and comparable moves sit on one screen. Nobody taps “why” on a recommendation they have no reason to doubt yet.</li>
+<li><strong>Low confidence asks.</strong> A confident wrong answer would manufacture the false certainty this work exists to remove.</li>
+<li><strong>Override is never blocked.</strong> A recommendation that can't be dismissed reads as a decision made on the customer's behalf.</li>
+</ul>
+<p class="inline-cta"><a class="btn btn-primary" href="../prototype/porter/index.html">Try the interactive prototype</a></p>
+</section>
+<section class="cs-sec" id="rollout" aria-labelledby="rollout-h">
+<h2 id="rollout-h">Roadmap and rollout</h2>
+<div class="table-scroll"><table class="data-table"><thead><tr><th scope="col">Release</th><th scope="col">Ships</th><th scope="col">Why here</th></tr></thead><tbody><tr><th scope="row">R0 · Instrumentation (pre-launch)</th><td>Post-trip confirmation on every completed first trip; no assistant yet</td><td>The recommendation screen shows comparable past moves, and that evidence doesn't exist today.</td></tr><tr><th scope="row">R1 · The assistant (cohorts 0–3)</th><td>Photo and text input, low-confidence questions, the load check before dispatch</td><td>The fallback is the expensive shared part and gets built either way, so photo and text ship together.</td></tr><tr><th scope="row">R2 · Dimensional accuracy (after general availability)</th><td>Longest-side gating where load-bay dimensions are published; a live per-city catalogue</td><td>Answers the two failure modes most likely to produce a confidently wrong answer.</td></tr><tr><th scope="row">R3 · Segment expansion (triggered, not dated)</th><td>Load types beyond single items and small household sets, one at a time</td><td>Accuracy tracks how dense the evidence is, so scope widens where the loop has already run.</td></tr></tbody></table></div>
+<p>The launch is in-product and scoped to a use case, not a city: single items and small household sets. Full home relocation is the packers-and-movers job the brief puts out of scope, and a bounded set of item types can be enumerated where full relocations can't.</p>
+<figure class="fig"><img src="../assets/img/porter-rollout-640.webp" srcset="../assets/img/porter-rollout-640.webp 640w, ../assets/img/porter-rollout-1200.webp 1200w" sizes="(min-width: 980px) 760px, 92vw" width="640" height="360" loading="lazy" decoding="async" alt="Go-to-market slide: launch on a use case, with a shadow, pilot, scale and general rollout."><figcaption>Holdout-gated rollout over the six-month window.</figcaption></figure>
+<ol>
+<li><strong>Shadow, 0% (weeks 1–3).</strong> The model runs silently on live sessions. Advance when its accuracy beats unaided manual selection.</li>
+<li><strong>Pilot, 5% (weeks 4–13).</strong> Two or three metros, against a concurrent holdout. Advance on no guardrail regression.</li>
+<li><strong>Scale, 25% (weeks 14–20).</strong> A wider city set, same load segment. Advance when the North Star is positive against the holdout.</li>
+<li><strong>General, 100% (week 21 on).</strong> All cities, with a small permanent holdout.</li>
+</ol>
+</section>
+<section class="cs-sec" id="measurement" aria-labelledby="measurement-h">
+<h2 id="measurement-h">Measurement: one North Star, five guardrails</h2>
+<p><strong>North Star:</strong> first-trip completion rate, from vehicle selection to a completed trip within seven days, for first-time individual customers. It's reported beside a volume companion (61,500 to 87,000 completed first trips a month) so the rate can't improve by shrinking its own denominator.</p>
+<div class="pair">
+<div><h3>Leading, booking side</h3><ul><li>Assistant engagement</li><li>Assistant completion</li><li>Recommendation acceptance</li><li>Override direction</li><li>Load-check switch rate</li><li>Selection to booking</li><li>Time to booking, per cohort</li></ul></div>
+<div><h3>Lagging, fulfilment side</h3><ul><li>Booking to completed trip</li><li>Recommendation accuracy</li><li>Override correctness</li><li>Vehicle change at pickup</li><li>Fare gap at completion</li></ul></div>
+</div>
+<p><strong>Guardrails,</strong> each gated against a concurrent holdout: cancellations, cancel and rebook, fare disputes, completed but not returning, and on-demand speed.</p>
+<p>Two loops turn on the same event, a trip that completes correctly. Each completed trip becomes evidence for the next customer's recommendation, and each correct first trip gives the customer their own sizing judgement, so they graduate out of needing the assistant. That's why assistant usage is read at cohort level, never as daily active use.</p>
+</section>
+<section class="cs-sec" id="risks" aria-labelledby="risks-h">
+<h2 id="risks-h">Risks and trade-offs</h2>
+<p>The register lists seventeen risks. Three decide whether this works.</p>
+<ul>
+<li><strong>Described wrongly, sized confidently.</strong> An inaccurate description produces a confident recommendation that passes every check and fails at the curb. There's no mitigation inside this version, so it's measured: the dispatch record is a floor, and the customer's own post-trip answer catches what a driver settling in cash never logs.</li>
+<li><strong>Weight is the easy half.</strong> Five vehicle categories sit within a few hundred kilograms of each other, and load-bay dimensions are published for only some. Naming a large single item makes the oversized question mandatory, and the recommendation gates on longest side where a dimension exists and rounds up where it doesn't.</li>
+<li><strong>A correct answer can feel like a penalty.</strong> The right vehicle is often bigger and costlier, and pricing is out of scope. Fare disputes is the guardrail most likely to move, so the copy names what the cheaper option actually costs.</li>
+</ul>
+<p>Kill criteria were set in advance: accuracy below the manual baseline halts the rollout, and a material regression in fare disputes rolls it back a cohort.</p>
+<p>What the design deliberately doesn't optimise for: reach (it's opt-in), recovery at the curb, the cheapest trip, breadth across barriers, and revenue per trip, since some current revenue comes from mis-sizing.</p>
+</section>
+<section class="cs-sec" id="limits" aria-labelledby="limits-h">
+<h2 id="limits-h">Limits of this work</h2>
+<ul>
+<li>The primary research is small: 17 survey responses and 4 interviews, one of them excluded. Three survey respondents were outside India and are used only to test whether the barrier belongs to the category.</li>
+<li>Review tags are a floor, not a ceiling. Only 59 of the 220 Porter reviews had full text, and snippet-only reviews with no confident match stayed untagged rather than being forced into a tag.</li>
+<li>Volumes, order value and repeat rate in the sizing are assumptions, marked as such throughout the pack.</li>
+<li>The prototype matches on deterministic rules over the typed description, not a live model. Its fares, reviews and addresses are illustrative.</li>
+<li>Loading responsibility, the third converging barrier, is a named gap this version doesn't address.</li>
+</ul>
+</section>
+<section class="cs-sec" id="documents" aria-labelledby="documents-h">
+<h2 id="documents-h">Full documents</h2>
+<div class="cs-docs"><a class="doc-link" href="../docs/nikhil-arora-porter-product-capstone.pdf">Case study deck <span class="meta">PDF · 20 pages</span></a><a class="doc-link" href="../docs/nikhil-arora-porter-supporting-artifacts.pdf">Supporting artifacts <span class="meta">PDF · 28 pages</span></a><a class="doc-link" href="../prototype/porter/index.html">Interactive prototype <span class="meta">Opens in your browser</span></a></div>
+</section>
+<nav class="cs-next" aria-label="More case studies">
+<a class="prev" href="zomato-retention.html"><span class="label">Previous case study</span><span class="t">Zomato: engagement and retention in Tier-1 cities</span></a>
+<a class="next" href="phonepe-ux-audit.html"><span class="label">Next case study</span><span class="t">PhonePe Send Money: UX audit and redesign</span></a>
+</nav>
+      </div>
+    </div>
+  </article>
+
+  <section class="sec wrap" id="contact" aria-labelledby="contact-title">
+    <h2 class="label" id="contact-title">Contact</h2>
+    <div class="sec-body">
+      <p class="contact-line">Open to Associate Product Manager and Product Analyst roles.</p>
+      <div class="contact-row">
+        <a class="email" id="email" href="mailto:n.nikhilarora1999@gmail.com">n.nikhilarora1999@gmail.com</a>
+        <button class="btn" type="button" id="copy-email" data-email="n.nikhilarora1999@gmail.com">Copy email</button>
+        <a class="btn" href="https://www.linkedin.com/in/nikhilarora2021" target="_blank" rel="me noopener">LinkedIn</a>
+      </div>
+      <p class="copy-status" id="copy-status" role="status" aria-live="polite"></p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot wrap">
+  <p>© 2026 Nikhil Arora</p>
+  <p>The case studies are independent work from Airtribe's AI-First Product Management program. They are not affiliated with or endorsed by the companies named, and company names belong to their owners.</p>
+</footer>
+
+<script src="../assets/js/copy-email.js" defer></script>
+</body>
+</html>

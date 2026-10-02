@@ -1,0 +1,873 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Porter Vehicle-Sizing Assistant – Concept Prototype | Nikhil Arora</title>
+<meta name="description" content="Interactive concept prototype of an AI vehicle-sizing assistant for first-time Porter customers, from Nikhil Arora's product management capstone.">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#EBEEF6">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../../favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<style>
+/* ============================================================
+   WRAPPER — the reviewer-facing page around the device.
+   Deliberately quiet: the phone is the hero.
+   ============================================================ */
+:root{
+  --page:#EBEEF6;
+  --panel:#FFFFFF;
+  --panel-2:#F3F5FB;
+  --edge:#DBE0EE;
+  --text:#141924;
+  --text-2:#5A6377;
+  --text-3:#8A93A6;
+  --accent:#2354E6;
+  --accent-soft:#DCE5FD;
+  --new:#0F7B5A;
+  --new-bg:#DCF2E9;
+  --exist:#6B7280;
+  --exist-bg:#E9ECF3;
+  --shadow:0 20px 50px rgba(17,24,42,.16);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --page:#0F1218;
+    --panel:#171B24;
+    --panel-2:#1E2330;
+    --edge:#2A303F;
+    --text:#EAEDF4;
+    --text-2:#A2ABBF;
+    --text-3:#727C91;
+    --accent:#7B9BFF;
+    --accent-soft:#20304F;
+    --new:#5FD5AC;
+    --new-bg:#123528;
+    --exist:#98A1B4;
+    --exist-bg:#242A38;
+    --shadow:0 20px 50px rgba(0,0,0,.5);
+  }
+}
+:root[data-theme="dark"]{
+  --page:#0F1218;
+  --panel:#171B24;
+  --panel-2:#1E2330;
+  --edge:#2A303F;
+  --text:#EAEDF4;
+  --text-2:#A2ABBF;
+  --text-3:#727C91;
+  --accent:#7B9BFF;
+  --accent-soft:#20304F;
+  --new:#5FD5AC;
+  --new-bg:#123528;
+  --exist:#98A1B4;
+  --exist-bg:#242A38;
+  --shadow:0 20px 50px rgba(0,0,0,.5);
+}
+
+*{box-sizing:border-box;}
+body{
+  margin:0;background:var(--page);color:var(--text);
+  font-family:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:15px;line-height:1.55;
+  padding:32px 24px 56px;
+}
+.stage{
+  max-width:1080px;margin:0 auto;
+  display:grid;grid-template-columns:minmax(0,390px) minmax(0,1fr);
+  gap:44px;align-items:start;
+}
+@media (max-width:900px){
+  .stage{grid-template-columns:minmax(0,1fr);gap:32px;justify-items:center;}
+  .info{max-width:520px;}
+}
+
+/* ---------- reviewer panel ---------- */
+.info{width:100%;}
+.eyebrow{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:11.5px;font-weight:500;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--text-3);margin:0 0 10px;
+}
+.info h1{
+  font-size:27px;line-height:1.22;font-weight:700;letter-spacing:-.02em;
+  margin:0 0 12px;text-wrap:balance;
+}
+.lede{font-size:15px;color:var(--text-2);margin:0 0 26px;max-width:56ch;}
+.lede b{color:var(--text);font-weight:600;}
+
+.block{
+  background:var(--panel);border:1px solid var(--edge);border-radius:14px;
+  padding:18px;margin-bottom:14px;
+}
+.block h2{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:11.5px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--text-3);margin:0 0 13px;
+}
+
+/* live screen indicator */
+.now{display:flex;align-items:center;gap:11px;}
+.now .nm{font-size:15.5px;font-weight:600;flex:1;min-width:0;}
+.tag{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  padding:4px 8px;border-radius:5px;flex:none;
+}
+.tag.new{background:var(--new-bg);color:var(--new);}
+.tag.existing{background:var(--exist-bg);color:var(--exist);}
+.now .st{font-size:13px;color:var(--text-2);margin-top:3px;}
+
+/* try-this buttons */
+.try{display:flex;flex-direction:column;gap:9px;}
+.try button{
+  display:block;width:100%;text-align:left;cursor:pointer;
+  background:var(--panel-2);border:1px solid var(--edge);border-radius:10px;
+  padding:11px 13px;font-family:inherit;color:var(--text);
+  transition:border-color .15s,background .15s;
+}
+.try button:hover{border-color:var(--accent);background:var(--accent-soft);}
+.try button:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+.try .q{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:13px;font-weight:500;display:block;margin-bottom:3px;
+}
+.try .r{font-size:12.5px;color:var(--text-2);display:block;}
+.try .r b{color:var(--text);font-weight:600;}
+
+.note{
+  font-size:12.5px;color:var(--text-3);line-height:1.5;margin:16px 0 0;
+}
+.note code{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11.5px;
+  background:var(--panel-2);padding:1px 5px;border-radius:4px;border:1px solid var(--edge);
+}
+
+/* ============================================================
+   DEVICE — the prototype itself. Light-only by design:
+   it is a screen rendering Porter's app, not part of the page.
+   ============================================================ */
+.phone{
+  --blue:#2354E6; --blue-dark:#1A43BC; --blue-soft:#DCE5FD;
+  --lav:#EDF0FC; --ink:#0F1626; --muted:#6B7280; --line:#E3E7F2;
+  --orange:#F5A623; --green:#0F9D58;
+  width:390px;max-width:100%;height:min(788px, calc(100vh - 72px));min-height:560px;
+  background:#fff;border-radius:38px;border:11px solid #14161C;
+  box-shadow:var(--shadow);overflow:hidden;position:relative;
+  display:flex;flex-direction:column;color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:15px;line-height:normal;position:sticky;top:32px;
+}
+@media (max-width:900px){ .phone{position:static;} }
+.phone *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+.notch{
+  position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:126px;height:26px;background:#14161C;border-radius:0 0 16px 16px;z-index:40;
+}
+.appbar{
+  padding:34px 18px 12px;background:var(--lav);
+  display:flex;align-items:center;gap:12px;flex:none;border-bottom:1px solid var(--line);
+}
+.appbar h1{font-size:19px;font-weight:700;letter-spacing:-.2px;}
+.back{
+  border:0;background:transparent;font-size:21px;line-height:1;cursor:pointer;
+  color:var(--ink);padding:2px 2px 2px 0;width:26px;text-align:left;font-family:inherit;
+}
+.back[hidden]{display:none;}
+.vp{flex:1;overflow-y:auto;padding:16px 18px 24px;}
+.screen{display:none;}
+.screen.on{display:block;animation:fade .22s ease;}
+@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){
+  .screen.on{animation:none;}
+  .spin{animation:none;}
+}
+
+.cta{
+  width:100%;text-align:left;border:1px solid #D4DDFB;background:var(--lav);
+  border-radius:16px;padding:14px;display:flex;gap:12px;align-items:center;
+  cursor:pointer;margin-bottom:22px;font-family:inherit;color:var(--ink);
+}
+.cta:hover{background:#E4E9FC;}
+.cta-ic{
+  width:42px;height:42px;border-radius:12px;background:var(--blue);
+  flex:none;display:flex;align-items:center;justify-content:center;
+}
+.cta h3{font-size:14.5px;font-weight:700;margin-bottom:3px;}
+.cta p{font-size:12.5px;color:var(--muted);line-height:1.42;}
+.chev{color:var(--blue);font-size:20px;flex:none;}
+
+.vcard{
+  width:100%;text-align:left;border:1.5px solid var(--line);background:#fff;
+  border-radius:16px;padding:13px;display:flex;gap:12px;align-items:center;
+  cursor:pointer;margin-bottom:11px;font-family:inherit;color:var(--ink);
+}
+.vcard:hover{border-color:#C3CEEC;}
+.vcard.sel{border-color:var(--blue);background:var(--blue-soft);}
+.vcard .art{width:60px;flex:none;}
+.vcard .nm{font-size:15px;font-weight:700;margin-bottom:2px;}
+.vcard .cap{font-size:12px;color:var(--muted);}
+.vcard .use{font-size:11.5px;color:var(--muted);margin-top:1px;}
+.vcard .pr{font-size:16px;font-weight:700;flex:none;}
+
+.primary{
+  width:100%;border:0;background:var(--blue);color:#fff;font-size:15.5px;font-weight:700;
+  padding:15px;border-radius:14px;cursor:pointer;font-family:inherit;margin-top:6px;
+}
+.primary:hover{background:var(--blue-dark);}
+.primary:disabled{background:#B9C6EC;cursor:default;}
+.ghost{
+  width:100%;border:1.5px solid var(--line);background:#fff;color:var(--ink);
+  font-size:15px;font-weight:600;padding:14px;border-radius:14px;
+  cursor:pointer;font-family:inherit;margin-top:10px;
+}
+.ghost:hover{border-color:#C3CEEC;}
+
+.intro{font-size:14px;color:var(--muted);line-height:1.5;margin-bottom:18px;}
+.thumbs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;}
+.thumb{
+  width:56px;height:56px;border-radius:11px;background:var(--lav);
+  border:1px solid var(--line);position:relative;display:flex;
+  align-items:center;justify-content:center;font-size:21px;
+}
+.thumb button{
+  position:absolute;top:-6px;right:-6px;width:19px;height:19px;border-radius:50%;
+  border:0;background:var(--ink);color:#fff;font-size:11px;line-height:1;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;font-family:inherit;
+}
+.bar{
+  display:flex;align-items:center;gap:8px;background:var(--lav);
+  border:1px solid var(--line);border-radius:26px;padding:6px 6px 6px 7px;
+}
+.icbtn{
+  width:36px;height:36px;border-radius:50%;flex:none;border:0;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;font-family:inherit;
+}
+.plus{background:#fff;border:1px solid var(--line);font-size:21px;color:var(--ink);}
+.send{background:var(--blue);color:#fff;font-size:17px;}
+.send:disabled{background:#B9C6EC;}
+.bar input{
+  flex:1;min-width:0;border:0;background:transparent;outline:none;
+  font-size:14.5px;font-family:inherit;color:var(--ink);padding:0 2px;
+}
+.attnote{font-size:11px;color:var(--muted);margin-top:9px;font-style:italic;}
+.hintrow{display:flex;gap:7px;flex-wrap:wrap;margin-top:16px;}
+.hint{
+  border:1px solid var(--line);background:#fff;border-radius:20px;
+  padding:7px 12px;font-size:12px;color:var(--muted);cursor:pointer;font-family:inherit;
+}
+.hint:hover{border-color:var(--blue);color:var(--blue);}
+
+.loadwrap{padding:70px 0;text-align:center;}
+.spin{
+  width:38px;height:38px;border-radius:50%;margin:0 auto 16px;
+  border:3px solid var(--blue-soft);border-top-color:var(--blue);animation:sp .8s linear infinite;
+}
+@keyframes sp{to{transform:rotate(360deg)}}
+.loadwrap p{font-size:14px;color:var(--muted);}
+
+.hero{
+  background:var(--blue-soft);border:1px solid #C9D7FB;border-radius:18px;
+  padding:18px;text-align:center;margin-bottom:16px;
+}
+.hero .lbl{
+  font-size:11px;font-weight:700;letter-spacing:.9px;text-transform:uppercase;
+  color:var(--blue);margin-bottom:10px;
+}
+.hero .art{width:96px;margin:0 auto 8px;}
+.hero h2{font-size:21px;font-weight:800;letter-spacing:-.3px;}
+.hero .cap{font-size:12.5px;color:var(--muted);margin-top:3px;}
+.hero .pr{font-size:19px;font-weight:800;margin-top:8px;}
+.why{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:18px;}
+.why h4{
+  font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;
+  letter-spacing:.6px;margin-bottom:6px;
+}
+.why p{font-size:14px;line-height:1.55;}
+.trust h4{font-size:13.5px;font-weight:700;margin-bottom:2px;}
+.trust .disc{font-size:11.5px;color:var(--muted);margin-bottom:11px;font-style:italic;}
+.rev{background:var(--lav);border-radius:13px;padding:12px;margin-bottom:9px;}
+.rev .top{display:flex;align-items:center;gap:8px;margin-bottom:5px;}
+.rev .av{
+  width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;
+  font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none;
+}
+.rev .rn{font-size:12.5px;font-weight:600;flex:1;}
+.rev .st{font-size:11px;color:var(--orange);letter-spacing:1px;}
+.rev p{font-size:13px;line-height:1.5;color:#374151;}
+
+.prog{display:flex;gap:5px;margin-bottom:20px;}
+.prog span{height:3px;border-radius:2px;flex:1;background:var(--line);}
+.prog span.on{background:var(--blue);}
+.qhead{font-size:12px;color:var(--muted);font-weight:600;margin-bottom:8px;}
+.qtitle{font-size:19px;font-weight:700;line-height:1.35;margin-bottom:18px;letter-spacing:-.2px;}
+.opt{
+  width:100%;text-align:left;border:1.5px solid var(--line);background:#fff;
+  border-radius:14px;padding:15px;font-size:14.5px;font-family:inherit;
+  cursor:pointer;margin-bottom:10px;color:var(--ink);
+}
+.opt:hover{border-color:var(--blue);background:var(--blue-soft);}
+
+.chip{
+  display:inline-flex;align-items:center;gap:7px;background:var(--blue-soft);
+  border:1px solid #C9D7FB;border-radius:11px;padding:9px 12px;
+  font-size:13px;font-weight:600;margin-bottom:18px;
+}
+.fld{margin-bottom:13px;}
+.fld label{
+  display:block;font-size:11.5px;font-weight:700;color:var(--muted);
+  text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px;
+}
+.fld .val{
+  border:1.5px solid var(--line);border-radius:12px;padding:13px;
+  font-size:14px;display:flex;align-items:center;gap:9px;
+}
+.dot{width:9px;height:9px;border-radius:50%;flex:none;}
+.dot.p{background:var(--green);}
+.dot.d{background:#E5484D;}
+.fare{background:var(--lav);border-radius:14px;padding:14px;margin:18px 0 4px;}
+.fare .r{
+  display:flex;justify-content:space-between;font-size:13.5px;margin-bottom:8px;
+  color:#374151;font-variant-numeric:tabular-nums;
+}
+.fare .r.tot{
+  font-size:16px;font-weight:800;color:var(--ink);margin:0;
+  border-top:1px solid var(--line);padding-top:10px;
+}
+.lc-flag{background:#FFF7ED;border:1px solid #FDBA74;color:#9A3412;border-radius:12px;
+  padding:11px 13px;font-size:13px;line-height:1.5;margin-bottom:14px;}
+.lc-row{display:flex;gap:9px;margin-bottom:18px;}
+.lc-col{flex:1;background:var(--lav);border:1px solid var(--line);border-radius:13px;
+  padding:12px;display:flex;flex-direction:column;gap:3px;min-width:0;}
+.lc-col.alt{border-color:var(--blue);background:var(--blue-soft);}
+.lc-lab{font-size:10.5px;font-weight:700;letter-spacing:.7px;text-transform:uppercase;color:#6B7280;}
+.lc-veh{font-size:14px;font-weight:700;letter-spacing:-.2px;line-height:1.25;}
+.lc-fare{font-size:13px;color:#4B5563;}
+.conf{text-align:center;padding:26px 0 0;}
+.tick{
+  width:66px;height:66px;border-radius:50%;background:var(--green);margin:0 auto 18px;
+  display:flex;align-items:center;justify-content:center;color:#fff;font-size:32px;
+}
+.conf h2{font-size:22px;font-weight:800;margin-bottom:7px;letter-spacing:-.3px;}
+.conf .sub{font-size:14px;color:var(--muted);margin-bottom:22px;line-height:1.5;}
+.sum{background:var(--lav);border-radius:15px;padding:16px;text-align:left;margin-bottom:8px;}
+.sum .r{
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:13.5px;padding:7px 0;font-variant-numeric:tabular-nums;
+}
+.sum .r span:first-child{color:var(--muted);}
+.sum .r span:last-child{font-weight:600;}
+</style>
+
+<style>
+.proto-note{max-width:1080px;margin:0 auto 26px;display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;
+  background:var(--panel);border:1px solid var(--edge);border-radius:12px;padding:11px 16px;font-size:13px;line-height:1.5;color:var(--text-2)}
+.proto-note p{margin:0;flex:1 1 420px;min-width:0}
+.proto-note strong{color:var(--text);font-weight:600}
+.proto-note a{color:var(--accent);font-weight:600;text-decoration:none;white-space:nowrap}
+.proto-note a:hover{text-decoration:underline}
+.proto-note a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+</style>
+</head>
+<body>
+<aside class="proto-note" aria-label="About this prototype">
+  <p><strong>Concept prototype by Nikhil Arora</strong> for an independent Porter case study (Airtribe AI-First Product Management capstone). Not affiliated with or endorsed by Porter. Fares, reviews, addresses and booking details are illustrative.</p>
+  <a href="../../case-studies/porter-first-trip-conversion.html">&larr; Back to the case study</a>
+</aside>
+
+<div class="stage">
+
+  <!-- ================= DEVICE ================= -->
+  <div class="phone">
+    <div class="notch"></div>
+    <div class="appbar">
+      <button class="back" id="back" hidden aria-label="Back">&#8592;</button>
+      <h1 id="title">Select Vehicle</h1>
+    </div>
+    <div class="vp" id="vp">
+
+      <section class="screen on" id="s-select">
+        <button class="cta" onclick="go('s-assist')">
+          <span class="cta-ic">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 3l1.8 4.9L18.7 9.7l-4.9 1.8L12 16.4l-1.8-4.9L5.3 9.7l4.9-1.8L12 3z" fill="#fff"/>
+              <circle cx="18.5" cy="17.5" r="1.7" fill="#fff"/>
+              <circle cx="6.2" cy="16.2" r="1.2" fill="#fff"/>
+            </svg>
+          </span>
+          <span style="flex:1">
+            <h3>Not sure what size you need?</h3>
+            <p>Describe or photograph what you're moving and we'll recommend one.</p>
+          </span>
+          <span class="chev">&#8250;</span>
+        </button>
+        <div id="grid"></div>
+        <button class="primary" id="proceed" disabled onclick="fromGrid()">Select a vehicle</button>
+      </section>
+
+      <section class="screen" id="s-assist">
+        <p class="intro">Tell us what you're moving — type it, add a photo, or both. We'll match it to the right vehicle.</p>
+        <div class="thumbs" id="thumbs"></div>
+        <div class="bar">
+          <button class="icbtn plus" onclick="addPhoto()" aria-label="Attach a photo">+</button>
+          <input id="inp" placeholder="Describe what you're moving..." autocomplete="off"
+                 aria-label="Describe what you're moving"
+                 oninput="syncSend()" onkeydown="if(event.key==='Enter')submitAssist()">
+          <button class="icbtn send" id="send" disabled onclick="submitAssist()" aria-label="Send">&#8593;</button>
+        </div>
+        <p class="attnote">Photo input is represented, not analysed — this prototype's matching runs on the typed description.</p>
+        <div class="hintrow">
+          <button class="hint" onclick="fill('2-seater sofa, a fridge, about 15 boxes')">2-seater sofa, fridge, 15 boxes</button>
+          <button class="hint" onclick="fill('Just a car seat')">Just a car seat</button>
+          <button class="hint" onclick="fill('Some furniture and boxes')">Some furniture and boxes</button>
+        </div>
+      </section>
+
+      <section class="screen" id="s-load">
+        <div class="loadwrap">
+          <div class="spin"></div>
+          <p>Matching your items to similar past bookings...</p>
+        </div>
+      </section>
+
+      <section class="screen" id="s-quiz">
+        <div class="prog" id="prog"><span class="on"></span><span></span><span></span></div>
+        <div class="qhead" id="qnum">Question 1 of 3</div>
+        <div class="qtitle" id="qtitle"></div>
+        <div id="qopts"></div>
+      </section>
+
+      <section class="screen" id="s-rec">
+        <div class="hero">
+          <div class="lbl">Recommended for you</div>
+          <div class="art" id="rec-art"></div>
+          <h2 id="rec-name"></h2>
+          <div class="cap" id="rec-cap"></div>
+          <div class="pr" id="rec-price"></div>
+        </div>
+        <div class="why">
+          <h4>Why this vehicle</h4>
+          <p id="rec-why"></p>
+        </div>
+        <div class="trust">
+          <h4>From similar moves</h4>
+          <div class="disc">Illustrative examples — not real Porter reviews</div>
+          <div id="rec-revs"></div>
+        </div>
+        <button class="primary" onclick="useRec()">Use this vehicle</button>
+        <button class="ghost" onclick="seeOthers()">See other options</button>
+      </section>
+
+      <section class="screen" id="s-trip">
+        <div class="chip"><span id="trip-art"></span><span id="trip-veh"></span></div>
+        <div class="fld">
+          <label>Pickup</label>
+          <div class="val"><span class="dot p"></span>Flat 402, Sunview Apartments, Vasant Kunj</div>
+        </div>
+        <div class="fld">
+          <label>Drop</label>
+          <div class="val"><span class="dot d"></span>B-14, Pocket 3, Sector 12 Dwarka</div>
+        </div>
+        <div class="fare">
+          <div class="r"><span>Base fare</span><span id="f-base"></span></div>
+          <div class="r"><span>Distance (8.4 km)</span><span id="f-dist"></span></div>
+          <div class="r"><span>Waiting &amp; loading</span><span>&#8377;40</span></div>
+          <div class="r tot"><span>Estimated total</span><span id="f-tot"></span></div>
+        </div>
+        <button class="primary" onclick="book()">Confirm booking</button>
+      </section>
+
+      <section class="screen" id="s-check">
+        <div class="lc-flag" id="lc-why"></div>
+        <div class="why">
+          <h4>What you told us</h4>
+          <p id="lc-desc"></p>
+        </div>
+        <div class="lc-row">
+          <div class="lc-col">
+            <span class="lc-lab">You chose</span>
+            <span class="lc-veh" id="lc-chosen"></span>
+            <span class="lc-fare" id="lc-chosen-fare"></span>
+          </div>
+          <div class="lc-col alt" id="lc-alt-col">
+            <span class="lc-lab">Most people book</span>
+            <span class="lc-veh" id="lc-alt"></span>
+            <span class="lc-fare" id="lc-alt-fare"></span>
+          </div>
+        </div>
+        <button class="primary" id="lc-primary" onclick="lcSwitch()"></button>
+        <button class="ghost" id="lc-ghost" onclick="confirmBooking()"></button>
+      </section>
+
+      <section class="screen" id="s-done">
+        <div class="conf">
+          <div class="tick">&#10003;</div>
+          <h2>Booking confirmed</h2>
+          <p class="sub">Your driver is on the way to the pickup location.</p>
+          <div class="sum">
+            <div class="r"><span>Booking ID</span><span>PTR-4417295</span></div>
+            <div class="r"><span>Vehicle</span><span id="d-veh"></span></div>
+            <div class="r"><span>Driver arrives in</span><span id="d-eta"></span></div>
+            <div class="r"><span>Estimated fare</span><span id="d-fare"></span></div>
+          </div>
+          <button class="ghost" onclick="restart()">Start over</button>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- ================= REVIEWER PANEL ================= -->
+  <div class="info">
+    <p class="eyebrow">Porter capstone · Step 4 prototype</p>
+    <h1>AI vehicle-sizing assistant</h1>
+    <p class="lede">
+      First-time Porter customers arrive at vehicle selection with a physical job — a sofa, a fridge,
+      a room of boxes — and no way to turn it into a vehicle category. This adds two things to the
+      existing flow: <b>a way to describe the job and get a sized recommendation back</b>, with the
+      reasoning and comparable moves shown alongside it &mdash; plus <b>one check before dispatch</b>
+      on the bookings the system has already flagged as uncertain.
+    </p>
+
+    <div class="block">
+      <h2>Currently viewing</h2>
+      <div class="now">
+        <div style="flex:1;min-width:0">
+          <div class="nm" id="now-name">Vehicle Selection</div>
+          <div class="st" id="now-note">Porter's existing screen, plus the new entry point above the grid.</div>
+        </div>
+        <span class="tag existing" id="now-tag">Modified</span>
+      </div>
+    </div>
+
+    <div class="block">
+      <h2>Try these four</h2>
+      <div class="try">
+        <button onclick="demo('2-seater sofa, a fridge, about 15 boxes')">
+          <span class="q">“2-seater sofa, a fridge, about 15 boxes”</span>
+          <span class="r">Sizes up to a <b>Canter 14ft</b> — a Pickup 8ft runs tight on this combination.</span>
+        </button>
+        <button onclick="demo('Just a car seat')">
+          <span class="q">“Just a car seat”</span>
+          <span class="r">Sizes down to a <b>Three-Wheeler</b> — the case that pushed a real interviewee into an oversized vehicle and a loading charge.</span>
+        </button>
+        <button onclick="demo('Some furniture and boxes')">
+          <span class="q">“Some furniture and boxes”</span>
+          <span class="r">Too vague to size, so it <b>asks three questions</b> rather than guessing.</span>
+        </button>
+        <button onclick="demoCheck()">
+          <span class="q">Same load, then override down to a <b>Pickup 8ft</b></span>
+          <span class="r">Stops on Trip details. Tap <b>Confirm booking</b> and the <b>load check</b> appears &mdash; before a driver is assigned, while a switch still costs only a fare difference.</span>
+        </button>
+      </div>
+      <p class="note">
+        Or type your own. Skipping the assistant entirely also works — tap a vehicle card directly and
+        book, which is the path Porter's app follows today.
+      </p>
+    </div>
+
+    <div class="block">
+      <h2>Reading this prototype</h2>
+      <p class="note" style="margin:0">
+        Screens marked <span class="tag new" style="display:inline-block;vertical-align:baseline">New</span>
+        are the proposed addition. Screens marked
+        <span class="tag existing" style="display:inline-block;vertical-align:baseline">Existing</span>
+        are Porter's current flow, included so the join between the two is visible.
+        Matching is deterministic rules over the typed text, not a live model — the reasoning line and
+        recommendation change with what you enter. Fares and reviews are illustrative.
+      </p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+/* ============================================================
+   VEHICLES — real Porter categories, verified against porter.in
+   ============================================================ */
+const ART = {
+  three:`<svg viewBox="0 0 100 62" width="100%" aria-hidden="true"><rect x="40" y="13" width="46" height="27" rx="3" fill="#F5A623"/><rect x="40" y="13" width="46" height="6" rx="3" fill="#DE8F17"/><path d="M14 25 Q14 13 25 13 L41 13 L41 40 L17 40 Q14 40 14 36 Z" fill="#2AA3D8"/><path d="M19.5 21 Q19.5 18 23 18 L34.5 18 L34.5 27 L18.5 27 Z" fill="#EAF6FC"/><circle cx="27" cy="45" r="7.2" fill="#2F3742"/><circle cx="27" cy="45" r="3" fill="#9AA4B2"/><circle cx="74" cy="45" r="7.2" fill="#2F3742"/><circle cx="74" cy="45" r="3" fill="#9AA4B2"/></svg>`,
+  pickup:`<svg viewBox="0 0 100 62" width="100%" aria-hidden="true"><rect x="8" y="20" width="46" height="22" rx="3" fill="#2AA3D8"/><rect x="18" y="12" width="22" height="9" rx="2" fill="#F5A623"/><path d="M54 24h14l14 11v7H54z" fill="#2AA3D8"/><rect x="58" y="27" width="11" height="8" rx="2" fill="#EAF6FC"/><circle cx="26" cy="47" r="8.5" fill="#2F3742"/><circle cx="26" cy="47" r="3.6" fill="#9AA4B2"/><circle cx="72" cy="47" r="8.5" fill="#2F3742"/><circle cx="72" cy="47" r="3.6" fill="#9AA4B2"/></svg>`,
+  canter:`<svg viewBox="0 0 100 62" width="100%" aria-hidden="true"><rect x="6" y="10" width="56" height="32" rx="3" fill="#EDF1F7" stroke="#C7D0DD" stroke-width="2"/><path d="M62 18h14l12 12v12H62z" fill="#2AA3D8"/><rect x="66" y="21" width="11" height="8" rx="2" fill="#EAF6FC"/><rect x="14" y="18" width="18" height="14" rx="2" fill="#F5A623"/><circle cx="24" cy="47" r="8.5" fill="#2F3742"/><circle cx="24" cy="47" r="3.6" fill="#9AA4B2"/><circle cx="76" cy="47" r="8.5" fill="#2F3742"/><circle cx="76" cy="47" r="3.6" fill="#9AA4B2"/></svg>`
+};
+const V = {
+  three:{id:'three',name:'Three-Wheeler / Tempo',cap:'Up to 500 kg &bull; 8 mins',
+    use:'Boxes, appliances &amp; small moves',price:489,base:170,eta:'8 mins',art:ART.three,
+    revs:[{n:'Priya S.',t:'Moved a washing machine and four boxes — plenty of room, nothing shifted.'},
+          {n:'Rahul K.',t:'Perfect for a single large item. Driver helped position it properly.'}]},
+  pickup:{id:'pickup',name:'Pickup 8ft',cap:'Up to 1250 kg &bull; 11 mins',
+    use:'1BHK moves &amp; bulky furniture',price:1129,base:310,eta:'11 mins',art:ART.pickup,
+    revs:[{n:'Anjali M.',t:'A sofa, a mattress and about eight cartons fit with space left over.'},
+          {n:'Vikram D.',t:'Right size for a 1BHK. Would have been tight in anything smaller.'}]},
+  canter:{id:'canter',name:'Canter 14ft',cap:'Up to 3500 kg &bull; 18 mins',
+    use:'2&ndash;3BHK &amp; full house shifting',price:2749,base:1120,eta:'18 mins',art:ART.canter,
+    revs:[{n:'Sneha R.',t:'Fit our 2-seater sofa and fridge with room to spare.'},
+          {n:'Arjun P.',t:'Driver said this was the right call for a studio move — everything in one trip.'},
+          {n:'Meera T.',t:'Full 2BHK including a double bed. No second trip needed.'}]}
+};
+
+/* ============================================================
+   MATCHING — deterministic rules, no model call
+   ============================================================ */
+const LARGE = ['sofa','couch','settee','fridge','refrigerator','double bed','bed','wardrobe','almirah',
+               'cupboard','washing machine','dining table','mattress','dresser','bookshelf'];
+const SMALL = ['car seat','carseat','suitcase','luggage','chair','tv','television','microwave',
+               'cycle','bicycle','plant','lamp','printer','oven','stool'];
+const HOUSE = ['2bhk','3bhk','2 bhk','3 bhk','4bhk','whole house','full house','entire house',
+               'moving house','house shifting','full home','entire flat','whole flat'];
+
+function boxCount(t){
+  const m = t.match(/(\d+)\s*(?:-|–|to)?\s*(\d+)?\s*(?:boxes|box|cartons|carton|bags)/);
+  if(m) return parseInt(m[2] || m[1], 10);
+  if(/\b(a few|few|couple of|2-3|two or three)\s+(boxes|cartons|bags)/.test(t)) return 3;
+  if(/boxes|cartons/.test(t)) return -1;
+  return 0;
+}
+function recommend(raw){
+  const t = (raw||'').toLowerCase().trim();
+  if(t.length < 3) return null;
+  const boxes = boxCount(t);
+  const large = LARGE.filter(k=>t.includes(k));
+  const small = SMALL.filter(k=>t.includes(k));
+  if(HOUSE.some(k=>t.includes(k)))
+    return {v:V.canter, why:'Full-home moves run to several large items plus packed cartons — a Canter 14ft takes it in one trip instead of two.'};
+  if(large.length >= 3)
+    return {v:V.canter, why:`With ${large.length} large items to load, a Canter 14ft is the safe call — smaller vehicles would need a second trip.`};
+  if(large.length >= 2 && boxes >= 8)
+    return {v:V.canter, why:'A Canter 14ft comfortably fits a 2-seater sofa, a fridge, and ~15 boxes — a Pickup 8ft runs tight on this combination.'};
+  if(large.length >= 2)
+    return {v:V.pickup, why:'Two large items load well into a Pickup 8ft with space left for a few cartons.'};
+  if(large.length === 1)
+    return boxes >= 8
+      ? {v:V.pickup, why:'One large item plus that many cartons needs the deck length of a Pickup 8ft.'}
+      : {v:V.three,  why:'A single large item with a light load fits a Three-Wheeler — no need to pay for unused space.'};
+  if(small.length > 0)
+    return {v:V.three, why:'That’s a small, light load. A Three-Wheeler handles it at the lowest fare in the fleet.'};
+  if(boxes > 12) return {v:V.pickup, why:'That many cartons stack better in a Pickup 8ft than a Three-Wheeler.'};
+  if(boxes > 0)  return {v:V.three,  why:'Cartons of this quantity fit comfortably in a Three-Wheeler.'};
+  return null;
+}
+
+/* ============================================================
+   LOW-CONFIDENCE FALLBACK
+   ============================================================ */
+const QUIZ = [
+  {q:'How many items are you moving, roughly?',
+   a:[['1–3 items',0],['4–10 items',1],['More than 10',2]]},
+  {q:'What’s the single largest item?',
+   a:[['Nothing bigger than a suitcase',0],['A chair or small table',1],['A sofa, fridge or bed',2]]},
+  {q:'Anything oversized or irregular?',
+   a:[['No, all regular items',0],['Yes — a mattress, mirror or similar',1]]}
+];
+let qi=0, qscore=0;
+function startQuiz(){ qi=0; qscore=0; qUsed=true; go('s-quiz'); renderQ(); }
+function renderQ(){
+  const c = QUIZ[qi];
+  document.getElementById('qnum').textContent = `Question ${qi+1} of ${QUIZ.length}`;
+  document.getElementById('qtitle').textContent = c.q;
+  document.querySelectorAll('#prog span').forEach((s,i)=>s.classList.toggle('on', i<=qi));
+  document.getElementById('qopts').innerHTML =
+    c.a.map(o=>`<button class="opt" onclick="answer(${o[1]})">${o[0]}</button>`).join('');
+}
+function answer(p){
+  qscore += p; qi++;
+  if(qi < QUIZ.length){ renderQ(); return; }
+  const v = qscore>=4 ? V.canter : qscore>=2 ? V.pickup : V.three;
+  const why = qscore>=4
+    ? 'Based on your answers — a high item count with large furniture — a Canter 14ft avoids a second trip.'
+    : qscore>=2
+      ? 'Your largest item and the quantity together point to a Pickup 8ft rather than a Three-Wheeler.'
+      : 'A light load with no oversized items fits a Three-Wheeler at the lowest fare.';
+  showRec({v, why});
+}
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+const META = {
+  's-select':{t:'Select Vehicle', n:'Vehicle Selection', tag:'Modified', cls:'existing',
+    d:"Porter's existing screen, plus the new entry point above the grid."},
+  's-assist':{t:'What are you moving?', n:'Assistant Input', tag:'New', cls:'new',
+    d:'One input for text and photos together, rather than a choice between modes.'},
+  's-load':{t:'Finding your vehicle', n:'Matching', tag:'New', cls:'new',
+    d:'Named progress instead of a blank wait.'},
+  's-quiz':{t:'A couple of questions', n:'Low-confidence fallback', tag:'New', cls:'new',
+    d:'When the description is too vague to size, it asks rather than guesses.'},
+  's-rec':{t:'Our recommendation', n:'Recommendation', tag:'New', cls:'new',
+    d:'The vehicle, why it was chosen, and comparable moves — together on one screen.'},
+  's-trip':{t:'Trip details', n:'Trip Details', tag:'Existing', cls:'existing',
+    d:"Porter's current screen, carrying the chosen vehicle through unchanged."},
+  's-check':{t:'Before we send a driver', n:'Load check', tag:'New', cls:'new',
+    d:'Fires only when the booking was flagged uncertain — a downward override, a low-confidence recommendation accepted, or the fallback path. No driver is assigned yet, so switching costs a fare difference rather than a negotiation at the curb.'},
+  's-done':{t:'Booking confirmed', n:'Booking Confirmed', tag:'Existing', cls:'existing',
+    d:'The end of the booking step — the point the funnel metric is measured to.'}
+};
+const BACKS = {'s-assist':'s-select','s-quiz':'s-assist','s-rec':'s-assist','s-trip':'s-select','s-check':'s-trip'};
+let chosen=null, photos=0, recV=null, qUsed=false, desc='';
+
+function go(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('on', s.id===id));
+  const m = META[id];
+  document.getElementById('title').textContent = m.t;
+  document.getElementById('now-name').textContent = m.n;
+  document.getElementById('now-note').textContent = m.d;
+  const tag = document.getElementById('now-tag');
+  tag.textContent = m.tag;
+  tag.className = 'tag ' + m.cls;
+  const b = document.getElementById('back');
+  b.hidden = !BACKS[id];
+  b.onclick = () => go(BACKS[id]);
+  document.getElementById('vp').scrollTop = 0;
+}
+
+function renderGrid(){
+  document.getElementById('grid').innerHTML = Object.values(V).map(v=>`
+    <button class="vcard${chosen===v.id?' sel':''}" onclick="pick('${v.id}')">
+      <span class="art">${v.art}</span>
+      <span style="flex:1;min-width:0">
+        <span class="nm">${v.name}</span>
+        <div class="cap">${v.cap}</div>
+        <div class="use">${v.use}</div>
+      </span>
+      <span class="pr">&#8377;${v.price}</span>
+    </button>`).join('');
+  const p = document.getElementById('proceed');
+  p.disabled = !chosen;
+  p.textContent = chosen ? `Proceed with ${V[chosen].name}` : 'Select a vehicle';
+}
+function pick(id){ chosen=id; renderGrid(); }
+function fromGrid(){ if(chosen) openTrip(V[chosen]); }
+
+function syncSend(){
+  document.getElementById('send').disabled =
+    !document.getElementById('inp').value.trim() && photos===0;
+}
+function fill(t){ document.getElementById('inp').value=t; syncSend(); document.getElementById('inp').focus(); }
+function addPhoto(){ photos++; renderThumbs(); syncSend(); }
+function removePhoto(){ photos--; renderThumbs(); syncSend(); }
+function renderThumbs(){
+  document.getElementById('thumbs').innerHTML =
+    Array.from({length:photos}).map(()=>
+      `<span class="thumb">&#128247;<button onclick="removePhoto()" aria-label="Remove photo">&times;</button></span>`).join('');
+}
+function submitAssist(){
+  const txt = document.getElementById('inp').value;
+  if(!txt.trim() && photos===0) return;
+  desc = txt.trim() || 'Photos of the load, no description typed';
+  go('s-load');
+  setTimeout(()=>{
+    const r = recommend(txt);
+    if(r) showRec(r); else startQuiz();
+  }, 1400);
+}
+
+/* panel shortcut: drive the phone from the reviewer panel */
+function demo(text){
+  restart();
+  go('s-assist');
+  document.getElementById('inp').value = text;
+  syncSend();
+  setTimeout(submitAssist, 260);
+}
+
+/* panel shortcut: recommend a Canter, override down to a Pickup, stop on Trip details
+   so the reviewer taps Confirm and meets the load check themselves. */
+function demoCheck(){
+  restart();
+  go('s-assist');
+  document.getElementById('inp').value = '2-seater sofa, a fridge, about 15 boxes';
+  syncSend();
+  setTimeout(function(){
+    submitAssist();
+    setTimeout(function(){
+      seeOthers();
+      chosen = 'pickup'; renderGrid(); openTrip(V.pickup);
+    }, 1900);
+  }, 260);
+}
+
+function showRec(r){
+  recV = r.v;
+  document.getElementById('rec-art').innerHTML = r.v.art;
+  document.getElementById('rec-name').textContent = r.v.name;
+  document.getElementById('rec-cap').innerHTML = r.v.cap;
+  document.getElementById('rec-price').innerHTML = '&#8377;' + r.v.price + ' est.';
+  document.getElementById('rec-why').textContent = r.why;
+  document.getElementById('rec-revs').innerHTML = r.v.revs.map(x=>`
+    <div class="rev">
+      <div class="top">
+        <span class="av">${x.n[0]}</span>
+        <span class="rn">${x.n}</span>
+        <span class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+      </div>
+      <p>${x.t}</p>
+    </div>`).join('');
+  go('s-rec');
+}
+function useRec(){ chosen = recV.id; renderGrid(); openTrip(recV); }
+function seeOthers(){ chosen = null; renderGrid(); go('s-select'); }
+
+function openTrip(v){
+  document.getElementById('trip-art').innerHTML =
+    `<span style="display:inline-block;width:26px;vertical-align:middle">${v.art}</span>`;
+  document.getElementById('trip-veh').innerHTML = v.name + ' selected';
+  document.getElementById('f-base').innerHTML = '&#8377;' + v.base;
+  document.getElementById('f-dist').innerHTML = '&#8377;' + (v.price - v.base - 40);
+  document.getElementById('f-tot').innerHTML  = '&#8377;' + v.price;
+  go('s-trip');
+}
+/* Stage 4 load check - fires only on a flagged-uncertain booking (PRD section 5.7).
+   No driver is assigned at this point, so a switch is a re-selection, not a re-assignment. */
+function book(){
+  const v = V[chosen];
+  const down = recV && v.price < recV.price;
+  if(down || qUsed){ showCheck(down ? recV : null); return; }
+  confirmBooking();
+}
+function showCheck(alt){
+  const v = V[chosen];
+  document.getElementById('lc-desc').textContent = desc || 'The items you described';
+  document.getElementById('lc-chosen').textContent = v.name;
+  document.getElementById('lc-chosen-fare').innerHTML = '&#8377;' + v.price + ' est.';
+  const flag = document.getElementById('lc-why');
+  const altCol = document.getElementById('lc-alt-col');
+  const prim = document.getElementById('lc-primary');
+  const ghost = document.getElementById('lc-ghost');
+  if(alt){
+    flag.textContent = 'You picked a smaller vehicle than the one we sized for this load.';
+    altCol.style.display = '';
+    document.getElementById('lc-alt').textContent = alt.name;
+    document.getElementById('lc-alt-fare').innerHTML = '&#8377;' + alt.price + ' est.';
+    prim.style.display = '';
+    prim.textContent = 'Switch to ' + alt.name;
+    ghost.textContent = 'Continue with ' + v.name;
+  } else {
+    flag.textContent = 'Your description needed extra questions, so we are confirming the load before a driver is assigned.';
+    altCol.style.display = 'none';
+    prim.style.display = 'none';
+    ghost.textContent = 'Yes — that is my load';
+  }
+  go('s-check');
+}
+function lcSwitch(){ chosen = recV.id; renderGrid(); openTrip(recV); }
+function confirmBooking(){
+  const v = V[chosen];
+  document.getElementById('d-veh').textContent = v.name;
+  document.getElementById('d-eta').textContent = v.eta;
+  document.getElementById('d-fare').innerHTML = '&#8377;' + v.price;
+  go('s-done');
+}
+function restart(){
+  chosen=null; photos=0; recV=null; qUsed=false; desc='';
+  document.getElementById('inp').value='';
+  renderThumbs(); renderGrid(); syncSend();
+  go('s-select');
+}
+
+renderGrid();
+</script>
+</body>
+</html>

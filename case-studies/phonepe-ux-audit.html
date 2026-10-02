@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PhonePe UX Case Study: Send Money Flow Audit | Nikhil Arora</title>
+<meta name="description" content="A heuristic evaluation of PhonePe&#x27;s UPI Send Money flow: a fake bank account that reaches the PIN step, chat tangled with payments, and a Figma redesign.">
+<link rel="canonical" href="https://nikhilarorapm.github.io/case-studies/phonepe-ux-audit.html">
+<meta name="author" content="Nikhil Arora">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#F4F6F3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E1411" media="(prefers-color-scheme: dark)">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Nikhil Arora">
+<meta property="og:locale" content="en_IN">
+<meta property="og:url" content="https://nikhilarorapm.github.io/case-studies/phonepe-ux-audit.html">
+<meta property="og:title" content="PhonePe UX Case Study: Send Money Flow Audit | Nikhil Arora">
+<meta property="og:description" content="A heuristic evaluation of PhonePe&#x27;s UPI Send Money flow: a fake bank account that reaches the PIN step, chat tangled with payments, and a Figma redesign.">
+<meta property="og:image" content="https://nikhilarorapm.github.io/assets/img/og-phonepe.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Case study: PhonePe Send Money UX audit and redesign.">
+<meta property="article:published_time" content="2026-10-01">
+<meta property="article:author" content="https://nikhilarorapm.github.io/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PhonePe UX Case Study: Send Money Flow Audit | Nikhil Arora">
+<meta name="twitter:description" content="A heuristic evaluation of PhonePe&#x27;s UPI Send Money flow: a fake bank account that reaches the PIN step, chat tangled with payments, and a Figma redesign.">
+<meta name="twitter:image" content="https://nikhilarorapm.github.io/assets/img/og-phonepe.jpg">
+
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="manifest" href="../site.webmanifest">
+<link rel="preload" href="../assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/css/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://nikhilarorapm.github.io/case-studies/phonepe-ux-audit.html#article",
+      "headline": "PhonePe Send Money: UX audit and redesign",
+      "description": "A heuristic evaluation of PhonePe's UPI Send Money flow: a fake bank account that reaches the PIN step, chat tangled with payments, and a Figma redesign.",
+      "url": "https://nikhilarorapm.github.io/case-studies/phonepe-ux-audit.html",
+      "mainEntityOfPage": "https://nikhilarorapm.github.io/case-studies/phonepe-ux-audit.html",
+      "image": "https://nikhilarorapm.github.io/assets/img/og-phonepe.jpg",
+      "datePublished": "2026-10-01",
+      "dateModified": "2026-10-01",
+      "inLanguage": "en-IN",
+      "author": {
+        "@type": "Person",
+        "@id": "https://nikhilarorapm.github.io/#person",
+        "name": "Nikhil Arora",
+        "url": "https://nikhilarorapm.github.io/"
+      },
+      "publisher": {
+        "@type": "Person",
+        "@id": "https://nikhilarorapm.github.io/#person",
+        "name": "Nikhil Arora",
+        "url": "https://nikhilarorapm.github.io/"
+      },
+      "isPartOf": {
+        "@id": "https://nikhilarorapm.github.io/#website"
+      },
+      "about": {
+        "@type": "Organization",
+        "name": "PhonePe"
+      },
+      "keywords": "PhonePe UX case study, UPI, Send Money, heuristic evaluation, Nielsen heuristics, UX laws, Figma redesign"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Nikhil Arora",
+          "item": "https://nikhilarorapm.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "PhonePe Send Money: UX audit and redesign",
+          "item": "https://nikhilarorapm.github.io/case-studies/phonepe-ux-audit.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-head">
+  <div class="wrap head-row">
+    <a class="brand" href="../index.html">Nikhil Arora</a>
+    <nav class="site-nav" aria-label="Sections">
+      <a href="../index.html#work">Work</a>
+      <a class="opt" href="../index.html#ai-builds">AI builds</a>
+      <a class="opt" href="../index.html#education">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="../index.html">Nikhil Arora</a></li><li><a href="../index.html#case-studies">Case studies</a></li><li aria-current="page">PhonePe</li></ol></nav>
+  </div>
+  <article class="wrap cs" aria-labelledby="cs-title">
+    <header class="cs-head">
+      <p class="kicker">Fintech · UX evaluation</p>
+      <h1 id="cs-title">PhonePe Send Money: UX audit and redesign</h1>
+      <p class="cs-lede">A product manager's usability evaluation of the most-used journey in India's largest UPI app, with fixes that respect PhonePe's business model.</p>
+      <dl class="cs-meta"><div><dt class="label">Context</dt><dd>Assignment, Airtribe AI-First Product Management</dd></div><div><dt class="label">Completed</dt><dd>June 2026</dd></div><div><dt class="label">Methods</dt><dd>Nielsen's 10 heuristics; Hick's, Fitts's and Jakob's laws; edge-case testing</dd></div><div><dt class="label">Built with</dt><dd>Figma</dd></div></dl>
+    </header>
+    <figure class="cs-hero"><img src="../assets/img/phonepe-ux-audit-640.webp" srcset="../assets/img/phonepe-ux-audit-640.webp 640w, ../assets/img/phonepe-ux-audit-1200.webp 1200w" sizes="(min-width: 1160px) 1060px, 92vw" width="640" height="360" alt="Slide from the evaluation: a fake bank account saved without a single check, beside the instant rejection of an invalid UPI number." fetchpriority="high" decoding="async"><figcaption>Edge-case test: a fake bank account saved without a single check, while an invalid UPI number is rejected instantly.</figcaption></figure>
+    <div class="cs-layout">
+      <nav class="toc" aria-label="On this page"><p class="label">On this page</p><ol><li><a href="#flow">Why this flow</a></li><li><a href="#home">Home screen</a></li><li><a href="#chat">Payment or chat</a></li><li><a href="#fake-account">The fake account</a></li><li><a href="#findings">Findings</a></li><li><a href="#laws">UX laws</a></li><li><a href="#redesign">Redesign</a></li><li><a href="#lessons">What it showed</a></li><li><a href="#limits">Limits</a></li><li><a href="#documents">Documents</a></li></ol></nav>
+      <div class="cs-body">
+<section class="summary" aria-labelledby="summary-h">
+<h2 class="label" id="summary-h">Summary</h2>
+<dl><div><dt class="label">Question</dt><dd>Where does Send Money add friction, and which of that friction is deliberate?</dd></div><div><dt class="label call">Key finding</dt><dd>A fake account with a gibberish name was saved and reached the UPI PIN step with no recipient confirmation. The same app rejects an invalid UPI ID instantly.</dd></div><div><dt class="label">What I proposed</dt><dd>IFSC search with a verified-recipient check, amount entry separated from chat, and more contrast for Money Transfers.</dd></div><div><dt class="label">Scope</dt><dd>15+ screens audited; 8 candidate issues narrowed to 3.</dd></div></dl>
+</section>
+<section class="cs-sec" id="flow" aria-labelledby="flow-h">
+<h2 id="flow-h">Why this flow</h2>
+<p>PhonePe handles roughly 46–48% of UPI transaction volume and reaches deep into Tier-2, Tier-3 and rural India. Send Money is its core peer-to-peer journey and the most-used action in the app, so friction there has the highest user impact. I used Google Pay as a contrast to sharpen each finding, not as a full competitor audit.</p>
+<ol class="steps"><li>Open the app</li><li>Choose a path: mobile number or bank</li><li>Select the recipient</li><li>Enter the amount</li><li>Pay</li><li>Enter UPI PIN</li></ol>
+</section>
+<section class="cs-sec" id="home" aria-labelledby="home-h">
+<h2 id="home-h">Home screen: dense by design, not by accident</h2>
+<figure class="fig"><img src="../assets/img/phonepe-home-screen-640.webp" srcset="../assets/img/phonepe-home-screen-640.webp 640w, ../assets/img/phonepe-home-screen-1200.webp 1200w" sizes="(min-width: 980px) 760px, 92vw" width="640" height="360" loading="lazy" decoding="async" alt="Slide on PhonePe's home screen: dense with ads and promos, with primary actions in the thumb zone."><figcaption>The home screen, compared with Google Pay's.</figcaption></figure>
+<p>The home screen carries ads, financial-product promos and dense icon grids. That isn't careless design: PhonePe has to monetise its interface directly, while Google Pay is subsidised by Alphabet's ad business and can afford a minimal screen. I logged it as a trade-off against aesthetic and minimalist design, not as a flaw.</p>
+<p>Two things work well. Primary actions sit where the thumb rests, with QR scan at the centre-bottom as the largest target (Fitts's law). And a help icon is available at the top right of every screen in the flow.</p>
+</section>
+<section class="cs-sec" id="chat" aria-labelledby="chat-h">
+<h2 id="chat-h">Is this a payment, or a chat?</h2>
+<p>When you pay a saved contact, the screen turns into a chat thread. The field reads “Enter amount or chat”, reply bubbles appear, and a messaging-style send arrow sits where a Pay button should be. The primary task shares one input with a secondary one, which breaks consistency and standards and the match with the real world.</p>
+<p>Google Pay keeps Pay, Request and Message as separate, labelled actions, and PhonePe's own bank-transfer path already uses a clean amount-only input. On the positive side, a verified banking name with a green shield appears before payment once an amount is entered, which is a strong trust signal.</p>
+</section>
+<section class="cs-sec" id="fake-account" aria-labelledby="fake-account-h">
+<h2 id="fake-account-h">A fake account, saved without a single check</h2>
+<p>I entered a random account number and a gibberish name on the bank-transfer path. PhonePe marked IFSC as “Not required”, saved the account as a beneficiary, and let the flow continue to the payment screen without confirming who was being paid.</p>
+<p>The same app validates a UPI ID instantly: “This UPI number doesn't exist.” PhonePe knows how to validate; it just doesn't on the bank-account path, so users trust a check that isn't happening. Skipping IFSC follows recognition over recall, but it trades away error prevention. Google Pay resolves the same tension with a searchable IFSC dropdown and upfront validation.</p>
+</section>
+<section class="cs-sec" id="findings" aria-labelledby="findings-h">
+<h2 id="findings-h">Issues and the heuristics they break</h2>
+<div class="table-scroll"><table class="data-table"><thead><tr><th scope="col">Issue</th><th scope="col">Heuristic</th><th scope="col">Fix</th></tr></thead><tbody><tr><th scope="row">The bank-transfer flow saves unverified or fake accounts with no recipient confirmation before the UPI PIN screen</th><td>Error prevention; visibility of system status</td><td>A searchable IFSC dropdown for users who want it, and the verified recipient name with a green tick before proceeding</td></tr><tr><th scope="row">The Send Money screen merges payment and chat in one field, forcing a QWERTY keyboard with small number keys</th><td>Consistency and standards; match between system and the real world</td><td>Separate amount entry from chat, add a distinct Message button beside the suggestion chips, and trigger a numeric keypad for the amount</td></tr><tr><th scope="row">Ads and promos on the home screen compete with the primary payment actions</th><td>Aesthetic and minimalist design</td><td>More contrast on the Money Transfers block, and section order personalised to the user's most frequent action</td></tr></tbody></table></div>
+</section>
+<section class="cs-sec" id="laws" aria-labelledby="laws-h">
+<h2 id="laws-h">Mapping to UX laws</h2>
+<ul>
+<li><strong>Hick's law.</strong> The dense home screen (ads, transfers, recharges, bills) increases the time it takes to decide on the payment action.</li>
+<li><strong>Fitts's law.</strong> QR and primary buttons sit in the thumb zone. Larger numeric keys would also reduce wrong-amount errors.</li>
+<li><strong>Jakob's law.</strong> The chat metaphor borrows a familiar pattern. The same law plays out differently for PhonePe's mass-market base and Google Pay's more fluent users.</li>
+</ul>
+</section>
+<section class="cs-sec" id="redesign" aria-labelledby="redesign-h">
+<h2 id="redesign-h">Redesign: untangling payment from chat</h2>
+<figure class="fig"><img src="../assets/img/phonepe-redesign-640.webp" srcset="../assets/img/phonepe-redesign-640.webp 640w, ../assets/img/phonepe-redesign-1200.webp 1200w" sizes="(min-width: 980px) 760px, 92vw" width="640" height="360" loading="lazy" decoding="async" alt="Before and after Figma screens of the payment screen, with amount entry separated from chat."><figcaption>Before and after, in Figma. Contact names are masked for publication.</figcaption></figure>
+<ul>
+<li>The input reads “Enter amount” only, with a ₹ symbol, so it signals a money-only field.</li>
+<li>A separate Message chip joins the existing quick replies, giving chat its own labelled home.</li>
+<li>A green Pay button sits inline with the linked account, so the action is unambiguous.</li>
+<li>An amount-only field triggers a numeric keypad with larger keys, which means fewer wrong amounts.</li>
+</ul>
+<p>Chat stays, because PhonePe's users may rely on it. It's separated from the payment action rather than removed: designed for PhonePe, not copied from Google Pay.</p>
+</section>
+<section class="cs-sec" id="lessons" aria-labelledby="lessons-h">
+<h2 id="lessons-h">What the evaluation showed</h2>
+<ul>
+<li><strong>Tell flaws from trade-offs.</strong> Several candidate issues were dropped after testing because they were deliberate trade-offs, not failures.</li>
+<li><strong>Design traces back to strategy.</strong> PhonePe's density, wording and icons follow from its business model and mass-market segment.</li>
+<li><strong>Solve within constraints.</strong> The strongest redesign fixes the problem while respecting PhonePe's users, revenue model and reality.</li>
+</ul>
+</section>
+<section class="cs-sec" id="limits" aria-labelledby="limits-h">
+<h2 id="limits-h">Limits of this work</h2>
+<ul>
+<li>This is a heuristic evaluation by one evaluator, not a usability test with users.</li>
+<li>The fake-account finding comes from edge-case testing on one account and one device (iOS, June 2026). The app may have changed since.</li>
+<li>The redesign covers the Send Money screen only.</li>
+</ul>
+</section>
+<section class="cs-sec" id="documents" aria-labelledby="documents-h">
+<h2 id="documents-h">Full documents</h2>
+<div class="cs-docs"><a class="doc-link" href="../docs/nikhil-arora-phonepe-ux-evaluation.pdf">Full evaluation <span class="meta">PDF · 8 pages</span></a></div>
+</section>
+<nav class="cs-next" aria-label="More case studies">
+<a class="prev" href="porter-first-trip-conversion.html"><span class="label">Previous case study</span><span class="t">Building first-time confidence at Porter</span></a>
+<a class="next" href="x-growth-aarrr.html"><span class="label">Next case study</span><span class="t">Growing X: AARRR funnel teardown and RICE-ranked epics</span></a>
+</nav>
+      </div>
+    </div>
+  </article>
+
+  <section class="sec wrap" id="contact" aria-labelledby="contact-title">
+    <h2 class="label" id="contact-title">Contact</h2>
+    <div class="sec-body">
+      <p class="contact-line">Open to Associate Product Manager and Product Analyst roles.</p>
+      <div class="contact-row">
+        <a class="email" id="email" href="mailto:n.nikhilarora1999@gmail.com">n.nikhilarora1999@gmail.com</a>
+        <button class="btn" type="button" id="copy-email" data-email="n.nikhilarora1999@gmail.com">Copy email</button>
+        <a class="btn" href="https://www.linkedin.com/in/nikhilarora2021" target="_blank" rel="me noopener">LinkedIn</a>
+      </div>
+      <p class="copy-status" id="copy-status" role="status" aria-live="polite"></p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot wrap">
+  <p>© 2026 Nikhil Arora</p>
+  <p>The case studies are independent work from Airtribe's AI-First Product Management program. They are not affiliated with or endorsed by the companies named, and company names belong to their owners.</p>
+</footer>
+
+<script src="../assets/js/copy-email.js" defer></script>
+</body>
+</html>
