@@ -234,27 +234,22 @@
 
   <section class="sec wrap" id="ai-builds" aria-labelledby="builds-title">
     <h2 class="label" id="builds-title">AI builds</h2>
-    <div class="sec-body build-grid">
-      <article class="build" id="workradar" aria-labelledby="workradar-title">
+    <div class="sec-body case-grid">
+      <article class="case" id="workradar" aria-labelledby="workradar-title">
+        <div class="case-thumb"><img src="assets/img/workradar-dashboard-640.webp" srcset="assets/img/workradar-dashboard-640.webp 640w, assets/img/workradar-dashboard-1200.webp 1200w" sizes="(min-width: 980px) 440px, (min-width: 760px) 45vw, 92vw" width="640" height="360" loading="lazy" decoding="async" alt="WorkRadar dashboard: an AI summary of the team's day, top work items and a list of blocked engineers."></div>
         <p class="kicker">AI-built MVP · Live</p>
         <h3 id="workradar-title"><a href="workradar/index.html">WorkRadar: a morning dashboard for engineering managers</a></h3>
         <p>One view of a team's day: top work, what happened, what needs attention and who is blocked. I took it from PRD to five high-fidelity screens to a working web app you can try, with sample data.</p>
         <p class="tools"><b>Built with</b>ChatPRD · Figma Make · Replit Agent · Claude</p>
         <p class="build-links"><a class="btn btn-primary" href="workradar/index.html">Open the live app <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="doc-link" href="docs/nikhil-arora-workradar-prd-ai-workflow.pdf">PRD and AI workflow <span class="meta">PDF · 4 pages</span></a></p>
       </article>
-      <article class="build" id="news-digest" aria-labelledby="digest-title">
+      <article class="case" id="news-digest" aria-labelledby="digest-title">
+        <div class="case-thumb"><img src="assets/img/n8n-digest-map-640.webp" srcset="assets/img/n8n-digest-map-640.webp 640w, assets/img/n8n-digest-map-1200.webp 1200w" sizes="(min-width: 980px) 440px, (min-width: 760px) 45vw, 92vw" width="640" height="360" loading="lazy" decoding="async" alt="Part of the n8n workflow map: one Gemini model clusters stories and judges relevance, a filter keeps relevant ones, and a lighter model summarises them."></div>
         <p class="kicker">Workflow automation · Interactive</p>
         <h3 id="digest-title"><a href="ai-builds/n8n-competitor-news-digest.html">Competitor News Daily Digest in n8n</a></h3>
         <p>Built to run every morning at 8 AM: it pulls the past week's news on five AI video companies, drops duplicates, clusters stories with one model and summarises them with a lighter one, then emails a categorised digest.</p>
         <p class="tools"><b>Built with</b>n8n · Serper · Gemini · Google Sheets · Gmail</p>
         <p class="build-links"><a class="btn btn-primary" href="ai-builds/n8n-competitor-news-digest.html">Explore the workflow <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="doc-link" href="docs/nikhil-arora-n8n-competitor-news-digest.pdf">Workflow write-up <span class="meta">PDF · 8 pages</span></a></p>
-      </article>
-      <article class="build" id="prd-prompt" aria-labelledby="prompt-title">
-        <p class="kicker">Prompt engineering</p>
-        <h3 id="prompt-title">A system prompt that writes build-ready PRDs</h3>
-        <p>It pushes an LLM to write PRDs engineering can build from without a follow-up meeting, rejects metrics with no baseline and scope with no non-goals, and bars invented numbers. I ran it on a quick-commerce price comparison idea and edited the output for leadership.</p>
-        <p class="tools"><b>Built with</b>System prompt design · LLMs</p>
-        <a class="doc-link" href="docs/nikhil-arora-prd-system-prompt.pdf">Prompt and PRD <span class="meta">PDF · 7 pages</span></a>
       </article>
     </div>
   </section>
@@ -263,6 +258,7 @@
     <h2 class="label" id="more-title">More work</h2>
     <div class="sec-body">
       <ul class="more">
+        <li><a href="docs/nikhil-arora-prd-system-prompt.pdf"><span class="more-title">A system prompt that writes build-ready PRDs</span><span class="more-desc">It pushes an LLM to write PRDs engineering can build from without a follow-up meeting, rejects metrics with no baseline and scope with no non-goals, and bars invented numbers. I ran it on a quick-commerce price comparison idea and edited the output for leadership.</span><span class="more-meta">AI · Prompt engineering · PDF 7 pp</span></a></li>
         <li><a href="docs/nikhil-arora-b2b-saas-access-management-strategy.pdf"><span class="more-title">Employee onboarding and IT access management</span><span class="more-desc">A two-to-three-year product and go-to-market strategy for a B2B SaaS company serving Indian tech firms of 200 to 1,000 employees.</span><span class="more-meta">B2B SaaS · Strategy · PDF 14 pp</span></a></li>
         <li><a href="docs/nikhil-arora-learnify-recommendation-system.pdf"><span class="more-title">Learnify recommendation system</span><span class="more-desc">System design for course recommendations aimed at 17 to 19 year olds, the learners who most need guidance and whom Indian data-protection law most limits tracking.</span><span class="more-meta">EdTech · System design · PDF 13 pp</span></a></li>
         <li><a href="docs/nikhil-arora-uber-pickup-experience.pdf"><span class="more-title">Improving the Uber pickup experience</span><span class="more-desc">Market sizing (TAM, SAM, SOM) and competitive analysis for pickup coordination at malls, offices, metro stations and gated communities.</span><span class="more-meta">Mobility · Market research · PDF 8 pp</span></a></li>
